@@ -4,6 +4,9 @@
     Author     : dhadotid
 --%>
 
+<%@page import="model.MDoctor"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.MSpecialist"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,7 +14,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Double R Clinic</title>
+        <title>RR Clinic</title>
 
         <link href="assets/dashboard/css/style.css" rel="stylesheet" />
         <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
@@ -51,11 +54,18 @@
                   <label class="col-md-3 control-label" for="DDIdSpecialist">ID Specialist</label>
                   <div class="col-md-9">
                      <select name="specialist">
-                         <c:forEach var="dropdownValue" items="${dropdownList}">
-                             <option value="${dropdownValue}">
-                                 ${dropdownValue}
-                             </option>
-                         </c:forEach>
+                         <%
+                            MSpecialist ms = new MSpecialist();
+                            ArrayList data = ms.tableSpecialist();
+                            for(int i = 0;i < data.size()-1;i+=3)
+                            {
+                                String idSpc = (String)data.get(i);
+                                String SpcName = (String)data.get(i+1);
+                                Double fare = (Double)data.get(i+2);
+                                String value = idSpc + " - "  +SpcName;
+                                out.println("<option value='"+idSpc+"'>"+value+"</option>");
+                            }
+                         %>
                       </select> 
                   </div>
                 </div>

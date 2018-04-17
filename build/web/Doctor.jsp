@@ -77,7 +77,6 @@
                       try{
                         MDoctor md = new MDoctor();
                         ArrayList data = md.tableDoctor();
-                        
                         for(int i = 0;i < data.size()-1;i+=6)
                         {
                             String idDoctor = (String)data.get(i);

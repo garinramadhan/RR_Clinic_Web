@@ -117,6 +117,7 @@ public class MSpecialist extends UnicastRemoteObject implements InSpecialist{
     }
     
     public ArrayList tableSpecialist(){
+        obj_koneksi.openConnection();
         ArrayList data = new ArrayList();
         String sql = "select * from Doctor.Specialist";
         try {
