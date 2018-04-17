@@ -5,33 +5,31 @@
  */
 package object;
 
-import java.rmi.Remote;
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
  *
  * @author GR
  */
-public interface InPayment extends Remote{
-    public String getPayID() throws RemoteException;;
-    public void setPayID(String PayID) throws RemoteException;;
-    public String getTreatID() throws RemoteException;;
-    public void setTreatID(String TreatID) throws RemoteException;;
-    public double getPayDoctor() throws RemoteException;;
-    public void setPayDoctor(double PayDoctor) throws RemoteException;;
-    public double getPayDrug() throws RemoteException;;
-    public void setPayDrug(double PayDrug) throws RemoteException;;
-    public double getPayTotal() throws RemoteException;;
-    public void setPayTotal(double PayTotal) throws RemoteException;;
-    public int getIsPay() throws RemoteException;;
-    public void setIsPay(int IsPay) throws RemoteException;;
-    public int doUpdate() throws RemoteException;;
-    public ArrayList tablePayment() throws RemoteException;;
-    public ArrayList getRecordDetailPayment(String search) throws RemoteException;;
-    public String[] FDPayment() throws RemoteException;;
-    public String autoid() throws RemoteException;;
+public interface InPayment{
+    public String getPayID();
+    public void setPayID(String PayID);
+    public String getTreatID();
+    public void setTreatID(String TreatID);
+    public double getPayDoctor();
+    public void setPayDoctor(double PayDoctor);
+    public double getPayDrug();
+    public void setPayDrug(double PayDrug);
+    public double getPayTotal();
+    public void setPayTotal(double PayTotal);
+    public int getIsPay();
+    public void setIsPay(int IsPay);
+    public int doUpdate();
+    public ArrayList tablePayment();
+    public ArrayList getRecordDetailPayment(String search);
+    public String[] FDPayment();
+    public String autoid();
     
-    public ArrayList tablePaymentHistory() throws RemoteException;;
-    public ArrayList getRecordDetailPaymentHistory(String search) throws RemoteException;;
+    public ArrayList tablePaymentHistory();
+    public ArrayList getRecordDetailPaymentHistory(String search);
 }

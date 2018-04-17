@@ -3,29 +3,27 @@
  * and open the template in the editor.
  */
 package object;
-import java.rmi.Remote;
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 /**
  *
  * @author user
  */
-public interface InPatient extends Remote{
-    public String getPatientID() throws RemoteException;;
-    public void setPatientID(String PatientID) throws RemoteException;;
-    public String getPatientName() throws RemoteException;;
-    public void setPatientName(String PatientName) throws RemoteException;;
-    public String getPatientGender() throws RemoteException;;
-    public void setPatientGender(String PatientGender) throws RemoteException;;
-    public String getPatientDOB() throws RemoteException;;
-    public void setPatientDOB(String PatientDOB) throws RemoteException;;
-    public String getPatientAddress() throws RemoteException;;
-    public void setPatientAddress(String PatientAddress) throws RemoteException;;
-    public int doInsert() throws RemoteException;;
-    public int doUpdate() throws RemoteException;;
-    public int doDelete() throws RemoteException;;
-    public ArrayList tablePatient() throws RemoteException;;
-    public ArrayList getRecord(String search) throws RemoteException;;
-    public String[] FDPatient() throws RemoteException;;
-    public String autoid() throws RemoteException;;
+public interface InPatient{
+    public String getPatientID();
+    public void setPatientID(String PatientID);
+    public String getPatientName();
+    public void setPatientName(String PatientName);
+    public String getPatientGender();
+    public void setPatientGender(String PatientGender);
+    public String getPatientDOB();
+    public void setPatientDOB(String PatientDOB);
+    public String getPatientAddress();
+    public void setPatientAddress(String PatientAddress);
+    public int doInsert();
+    public int doUpdate();
+    public int doDelete();
+    public ArrayList tablePatient();
+    public ArrayList getRecord(String search);
+    public String[] FDPatient();
+    public String autoid();
 }

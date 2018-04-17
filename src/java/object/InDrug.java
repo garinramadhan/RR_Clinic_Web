@@ -5,33 +5,30 @@
  */
 package object;
 
-import java.rmi.Remote;
-import java.rmi.RemoteException;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 
 /**
  *
  * @author GR
  */
-public interface InDrug extends Remote {
-    public String getDrugID() throws RemoteException;;
-    public void setDrugID(String DrugID) throws RemoteException;;
-    public String getDrugName() throws RemoteException;;
-    public void setDrugName(String DrugName) throws RemoteException;;
-    public String getDrugType() throws RemoteException;;
-    public void setDrugType(String DrugType) throws RemoteException;;
-    public int getDrugStock() throws RemoteException;;
-    public void setDrugStock(int DrugStock) throws RemoteException;;
-    public String getDrugEXP() throws RemoteException;;
-    public void setDrugEXP(String DrugEXP) throws RemoteException;;
-    public double getDrugPrice() throws RemoteException;;
-    public void setDrugPrice(double DrugPrice) throws RemoteException;;
-    public int doInsert() throws RemoteException;;
-    public int doUpdate() throws RemoteException;;
-    public int doDelete() throws RemoteException;;
-    public ArrayList tableDrug() throws RemoteException;;
-    public ArrayList getRecord(String search) throws RemoteException;;
-    public String[] FDDrug() throws RemoteException;;
-    public String autoid() throws RemoteException;;
+public interface InDrug {
+    public String getDrugID();
+    public void setDrugID(String DrugID);
+    public String getDrugName();
+    public void setDrugName(String DrugName);
+    public String getDrugType();
+    public void setDrugType(String DrugType);
+    public int getDrugStock();
+    public void setDrugStock(int DrugStock);
+    public String getDrugEXP();
+    public void setDrugEXP(String DrugEXP);
+    public double getDrugPrice();
+    public void setDrugPrice(double DrugPrice);
+    public int doInsert();
+    public int doUpdate();
+    public int doDelete();
+    public ArrayList tableDrug();
+    public ArrayList getRecord(String search);
+    public String[] FDDrug();
+    public String autoid();
 }

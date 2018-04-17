@@ -5,32 +5,30 @@
  */
 package object;
 
-import java.rmi.Remote;
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
  *
  * @author GR
  */
-public interface InTreatment extends Remote{
-    public String getTreatID() throws RemoteException;;
-    public void setTreatID(String TreatID) throws RemoteException;;
-    public String getPatientID() throws RemoteException;;
-    public void setPatientID(String PatientID) throws RemoteException;;
-    public String getDoctorID() throws RemoteException;;
-    public void setDoctorID(String DoctorID) throws RemoteException;;
-    public String getRecipeID() throws RemoteException;;
-    public void setRecipeID(String RecipeID) throws RemoteException;;
-    public String getDiagnose() throws RemoteException;;
-    public void setDiagnose(String Diagnose) throws RemoteException;;
-    public String getTreatDate() throws RemoteException;;
-    public void setTreatDate(String TreatDate) throws RemoteException;;
-    public int doInsert() throws RemoteException;;
-    public ArrayList getRecordDoctor(String search) throws RemoteException;;
-    public String[] FDTreatment() throws RemoteException;;
-    public String autoid() throws RemoteException;;
-    public String autoidRecipe() throws RemoteException;;
-    public ArrayList tablePatient() throws RemoteException;;
-    public ArrayList tableDoctor() throws RemoteException;;
+public interface InTreatment {
+    public String getTreatID();
+    public void setTreatID(String TreatID);
+    public String getPatientID();
+    public void setPatientID(String PatientID);
+    public String getDoctorID();
+    public void setDoctorID(String DoctorID);
+    public String getRecipeID();
+    public void setRecipeID(String RecipeID);
+    public String getDiagnose();
+    public void setDiagnose(String Diagnose);
+    public String getTreatDate();
+    public void setTreatDate(String TreatDate);
+    public int doInsert();
+    public ArrayList getRecordDoctor(String search);
+    public String[] FDTreatment();
+    public String autoid();
+    public String autoidRecipe();
+    public ArrayList tablePatient();
+    public ArrayList tableDoctor();
 }

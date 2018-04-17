@@ -5,36 +5,33 @@
  */
 package object;
 
-import java.rmi.Remote;
-import java.rmi.RemoteException;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 
 /**
  *
  * @author GR
  */
-public interface InRecipe extends Remote{
-    public String getRecipeDetID() throws RemoteException;;
-    public void setRecipeDetID(String RecipeDetID) throws RemoteException;;
-    public String getRecipeID() throws RemoteException;;
-    public void setRecipeID(String RecipeID) throws RemoteException;;
-    public String getDrugID() throws RemoteException;;
-    public void setDrugID(String DrugID) throws RemoteException;;
-    public int getQTY() throws RemoteException;;
-    public void setQTY(int QTY) throws RemoteException;;
-    public String getDose() throws RemoteException;;
-    public void setDose(String Dose) throws RemoteException;;
-    public double getSubTotal() throws RemoteException;;
-    public void setSubTotal(double SubTotal) throws RemoteException;;
-    public int getIsDraft() throws RemoteException;;
-    public void setIsDraft(int IsDraft) throws RemoteException;;
-    public int doInsert() throws RemoteException;;
-//    public int doUpdate() throws RemoteException;;
-    public int doDelete() throws RemoteException;;
-    public ArrayList tableRecipe() throws RemoteException;;
-    public ArrayList tableDrug() throws RemoteException;;
-    public ArrayList getRecord(String search) throws RemoteException;;
-    public String[] FDRecipe() throws RemoteException;;
-    public String autoid() throws RemoteException;;
+public interface InRecipe {
+    public String getRecipeDetID();
+    public void setRecipeDetID(String RecipeDetID);
+    public String getRecipeID();
+    public void setRecipeID(String RecipeID);
+    public String getDrugID();
+    public void setDrugID(String DrugID);
+    public int getQTY();
+    public void setQTY(int QTY);
+    public String getDose();
+    public void setDose(String Dose);
+    public double getSubTotal();
+    public void setSubTotal(double SubTotal);
+    public int getIsDraft();
+    public void setIsDraft(int IsDraft);
+    public int doInsert();
+//    public int doUpdate();
+    public int doDelete();
+    public ArrayList tableRecipe();
+    public ArrayList tableDrug();
+    public ArrayList getRecord(String search);
+    public String[] FDRecipe();
+    public String autoid();
 }

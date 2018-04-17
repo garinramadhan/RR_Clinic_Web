@@ -3,33 +3,31 @@
  * and open the template in the editor.
  */
 package object;
-import java.rmi.Remote;
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 /**
  *
  * @author user
  */
-public interface InDoctor extends Remote{
-    public String getDoctorID() throws RemoteException;;
-    public void setDoctorID(String DoctorID) throws RemoteException;;
-    public String getDoctorSPC() throws RemoteException;;
-    public void setDoctorSPC(String DoctorSPC) throws RemoteException;;
-    public String getDoctorName() throws RemoteException;;
-    public void setDoctorName(String DoctorName) throws RemoteException;;
-    public String getDoctorGender() throws RemoteException;;
-    public void setDoctorGender(String DoctorGender) throws RemoteException;;
-    public String getDoctorDOB() throws RemoteException;;
-    public void setDoctorDOB(String DoctorDOB) throws RemoteException;;
-    public String getDoctorPhone() throws RemoteException;;
-    public void setDoctorPhone(String DoctorPhone) throws RemoteException;;
-    public int doInsert() throws RemoteException;;
-    public int doUpdate() throws RemoteException;;
-    public int doDelete() throws RemoteException;;
-    public ArrayList getRecord(String search) throws RemoteException;;
-    public ArrayList getRecordSpecialist(String search) throws RemoteException;;
-    public String[] FDDoctor() throws RemoteException;;
-    public String autoid() throws RemoteException;;
-    public ArrayList tableDoctor() throws RemoteException;;
-    public ArrayList tableSpecialist() throws RemoteException;;
+public interface InDoctor {
+    public String getDoctorID();
+    public void setDoctorID(String DoctorID);
+    public String getDoctorSPC();
+    public void setDoctorSPC(String DoctorSPC);
+    public String getDoctorName();
+    public void setDoctorName(String DoctorName);
+    public String getDoctorGender();
+    public void setDoctorGender(String DoctorGender);
+    public String getDoctorDOB();
+    public void setDoctorDOB(String DoctorDOB);
+    public String getDoctorPhone();
+    public void setDoctorPhone(String DoctorPhone);
+    public int doInsert();
+    public int doUpdate();
+    public int doDelete();
+    public ArrayList getRecord(String search);
+    public ArrayList getRecordSpecialist(String search);
+    public String[] FDDoctor();
+    public String autoid();
+    public ArrayList tableDoctor();
+    public ArrayList tableSpecialist();
 }
