@@ -94,11 +94,9 @@
                             out.println("<td>"+DOB+"</td>");
                             out.println("<td>"+DoctorPhone+"</td>");
                             out.println("<td>");
-                            out.println("<a href='view_book.jsp?id="+idDoctor+"'>View </a>");
-                            out.println("<a href='edit_book.jsp?id="+idDoctor+"'>Modify </a>");
-                            out.println("<a href='delete_book.jsp?id="+idDoctor+"'>Delete </a>");
+                            out.println("<a role='button' class='btn btn-info' href='AddDoctor.jsp?status=Update&id="+idDoctor+"' >Modify </a>");
+                            out.println("<a role='button' class='btn btn-danger' href='delete_book.jsp?id="+idDoctor+"'>Delete </a>");
                             out.println("</td>");
-                            
                             out.println("</tr>");
                         }
                     }

@@ -40,25 +40,29 @@ public class AddDoctor extends HttpServlet {
             MDoctor md = new MDoctor();
             if(status.equals("Update")){
                 md.setDoctorID(request.getParameter("txtID"));
-                //md.setDoctorSPC(request.getParameter("")); belum ada namanya
+                md.setDoctorSPC(request.getParameter("specialist"));
                 md.setDoctorName(request.getParameter("txtName"));
                 md.setDoctorGender(gender);
                 md.setDoctorDOB(request.getParameter("dob"));
                 md.setDoctorPhone(request.getParameter("txtPhone"));
                 int i = md.doUpdate();
                 if(i > 0){
-                    response.sendRedirect("Doctor.jsp");
+                    response.sendRedirect("Doctor.jsp?ket=Sukses");
+                }else{
+                    response.sendRedirect("Doctor.jsp?ket=Gagal");
                 }
             }else if(status.equals("Save")){
                 md.setDoctorID(request.getParameter("txtID"));
-                //md.setDoctorSPC(request.getParameter("")); belum ada namanya
+                md.setDoctorSPC(request.getParameter("specialist"));
                 md.setDoctorName(request.getParameter("txtName"));
                 md.setDoctorGender(gender);
                 md.setDoctorDOB(request.getParameter("dob"));
                 md.setDoctorPhone(request.getParameter("txtPhone"));
                 int i = md.doInsert();
                 if(i > 0){
-                    response.sendRedirect("Doctor.jsp");
+                    response.sendRedirect("Doctor.jsp?ket=Sukses");
+                }else{
+                    response.sendRedirect("Doctor.jsp?ket=Gagal");
                 }
             }
         }

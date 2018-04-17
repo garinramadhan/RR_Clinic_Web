@@ -143,6 +143,39 @@ public class MDoctor implements InDoctor{
         return i;
     }
     
+    public ArrayList getRecord()
+    {
+        ArrayList data = new ArrayList();
+        try
+        {
+            obj_koneksi.openConnection();
+            String str = "select * from Doctor.Doctor where Id_Doctor = ?";
+            PreparedStatement pr = obj_koneksi.con.prepareStatement(str);
+            pr.setString(1, DoctorID);
+            ResultSet rs = pr.executeQuery();
+            while(rs.next())
+            {
+                 this.setDoctorID(rs.getString(1));
+                 this.setDoctorSPC(rs.getString(2));
+                 this.setDoctorName(rs.getString(3));
+                 this.setDoctorGender(rs.getString(4));
+                 this.setDoctorDOB(rs.getString(5));
+                 this.setDoctorPhone(rs.getString(6));
+                 data.add(this.getDoctorID());
+                 data.add(this.getDoctorSPC());
+                 data.add(this.getDoctorName());
+                 data.add(this.getDoctorGender());
+                 data.add(this.getDoctorDOB());
+                 data.add(this.getDoctorPhone());
+            }
+        }
+        catch(SQLException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+        return data;
+    }
+    
     public ArrayList getRecord(String search)
     {
         ArrayList data = new ArrayList();
