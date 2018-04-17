@@ -18,13 +18,13 @@ import object.InRecipe;
  *
  * @author GR
  */
-public class MRecipe extends UnicastRemoteObject implements InRecipe {
+public class MRecipe implements InRecipe {
     private String RecipeDetID, RecipeID, DrugID, Dose;
     private double SubTotal;
     private int QTY , IsDraft;
     private koneksi obj_koneksi = new koneksi();
 
-    public MRecipe()throws Exception
+    public MRecipe()
     {
         super();
     }

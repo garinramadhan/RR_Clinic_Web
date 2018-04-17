@@ -18,11 +18,11 @@ import object.InTreatment;
  *
  * @author GR
  */
-public class MTreatment extends UnicastRemoteObject implements InTreatment {
+public class MTreatment implements InTreatment {
     private String TreatID, PatientID, DoctorID, RecipeID, Diagnose, TreatDate;
     private koneksi obj_koneksi = new koneksi();
     
-    public MTreatment()throws Exception
+    public MTreatment()
     {
         super();
     }

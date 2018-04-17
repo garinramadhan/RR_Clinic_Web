@@ -4,8 +4,6 @@
  */
 package model;
 import config.koneksi;
-import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,11 +14,11 @@ import object.InDoctor;
  *
  * @author user
  */
-public class MDoctor extends UnicastRemoteObject implements InDoctor{
+public class MDoctor implements InDoctor{
     private String DoctorID, DoctorSPC, DoctorName, DoctorGender, DoctorDOB, DoctorPhone;
     private koneksi obj_koneksi = new koneksi();
     
-    public MDoctor()throws Exception
+    public MDoctor()
     {
         super();
     }

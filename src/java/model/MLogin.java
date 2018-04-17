@@ -18,11 +18,11 @@ import object.InLogin;
  *
  * @author GR
  */
-public class MLogin extends UnicastRemoteObject implements InLogin {
+public class MLogin implements InLogin {
     private String UserID, Username, Password, IsAdmin;
     private koneksi obj_koneksi = new koneksi();
     
-    public MLogin()throws Exception{
+    public MLogin(){
         super();
     }
 

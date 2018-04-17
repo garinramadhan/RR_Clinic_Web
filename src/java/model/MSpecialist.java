@@ -15,12 +15,12 @@ import object.InSpecialist;
  *
  * @author user
  */
-public class MSpecialist extends UnicastRemoteObject implements InSpecialist{
+public class MSpecialist implements InSpecialist{
     private String SpcID, SpcName;
     private double SpcFare;
     private koneksi obj_koneksi = new koneksi();
     
-    public MSpecialist()throws Exception
+    public MSpecialist()
     {
         super();
     }

@@ -15,11 +15,11 @@ import object.InPatient;
  *
  * @author user
  */
-public class MPatient extends UnicastRemoteObject implements InPatient{
+public class MPatient implements InPatient{
     private String PatientID, PatientName, PatientGender, PatientDOB, PatientAddress;
     private koneksi obj_koneksi = new koneksi();
     
-    public MPatient()throws Exception
+    public MPatient()
     {
         super();
     }

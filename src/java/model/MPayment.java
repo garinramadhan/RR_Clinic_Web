@@ -18,13 +18,13 @@ import object.InPayment;
  *
  * @author dhadotid
  */
-public class MPayment extends UnicastRemoteObject implements InPayment{
+public class MPayment implements InPayment{
     private koneksi obj_koneksi = new koneksi();
     String PayID, TreatID;
     double PayDoctor, PayDrug, PayTotal;
     int IsPay;
     
-    public MPayment()throws Exception
+    public MPayment()
     {
         super();
     }

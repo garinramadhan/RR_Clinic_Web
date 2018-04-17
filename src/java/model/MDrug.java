@@ -6,7 +6,6 @@
 package model;
 
 import config.koneksi;
-import java.rmi.server.UnicastRemoteObject;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,13 +17,13 @@ import object.InDrug;
  *
  * @author GR
  */
-public class MDrug extends UnicastRemoteObject implements InDrug {
+public class MDrug implements InDrug{
     private String DrugID, DrugName, DrugType, DrugEXP;
     private int DrugStock;
     private double DrugPrice;
     private koneksi obj_koneksi = new koneksi();
     
-    public MDrug()throws Exception{
+    public MDrug(){
         super();
     }
 
