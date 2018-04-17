@@ -138,6 +138,33 @@ public class MSpecialist implements InSpecialist{
         return data;
     }
     
+    public ArrayList getRecord()
+    {
+        ArrayList data = new ArrayList();
+        try
+        {
+            obj_koneksi.openConnection();
+            String str = "select * from Doctor.Specialist where Id_Specialist = ?";
+            PreparedStatement pr = obj_koneksi.con.prepareStatement(str);
+            pr.setString(1, SpcID);
+            ResultSet rs = pr.executeQuery();
+            while(rs.next())
+            {
+                 this.setSpcID(rs.getString(1));
+                 this.setSpcName(rs.getString(2));
+                 this.setSpcFare(rs.getDouble(3));
+                 data.add(this.getSpcID());
+                 data.add(this.getSpcName());
+                 data.add(this.getSpcFare());
+            }
+        }
+        catch(SQLException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+        return data;
+    }
+    
     public ArrayList getRecord(String search)
     {
         ArrayList data = new ArrayList();

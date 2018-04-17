@@ -136,6 +136,7 @@ public class MPatient implements InPatient{
     }
     
     public ArrayList tablePatient(){
+        obj_koneksi.openConnection();
         ArrayList data = new ArrayList();
         String sql = "select * from Patient.Patient";
         try {
@@ -156,6 +157,37 @@ public class MPatient implements InPatient{
              }
         } catch (SQLException ex) {
             System.out.println("Error: " + ex);
+        }
+        return data;
+    }
+    
+    public ArrayList getRecord()
+    {
+        ArrayList data = new ArrayList();
+        try
+        {
+            obj_koneksi.openConnection();
+            String str = "select * from Patient.Patient where Id_Patient = ?";
+            PreparedStatement pr = obj_koneksi.con.prepareStatement(str);
+            pr.setString(1, PatientID);
+            ResultSet rs = pr.executeQuery();
+            while(rs.next())
+            {
+                 this.setPatientID(rs.getString(1));
+                 this.setPatientName(rs.getString(2));
+                 this.setPatientDOB(rs.getString(3));
+                 this.setPatientAddress(rs.getString(4));
+                 this.setPatientGender(rs.getString(5));
+                 data.add(this.getPatientID());
+                 data.add(this.getPatientName());
+                 data.add(this.getPatientDOB());
+                 data.add(this.getPatientAddress());
+                 data.add(this.getPatientGender());
+            }
+        }
+        catch(SQLException ex)
+        {
+            System.out.println(ex.getMessage());
         }
         return data;
     }

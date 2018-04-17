@@ -37,9 +37,9 @@
                 <nav>
                     <ul>
                         <li><a href="Dashboard.aspx">Dashboard</a></li>
-                        <li><a href="Specialist.aspx">Specialist</a></li>
+                        <li><a href="Specialist.jsp">Specialist</a></li>
                         <li><a href="Doctor.jsp">Doctor</a></li>
-                        <li><a href="Patient.aspx">Patient</a></li>
+                        <li><a href="Patient.jsp">Patient</a></li>
                         <li><a href="Treatment.aspx">Treatment</a></li>
                         <li><a href="Recipe.aspx">Recipe</a></li>
                         <!--
@@ -50,7 +50,7 @@
                             </ul>
                         </li>
                         !-->
-                        <li><a href="Drug.aspx">Drug</a></li>
+                        <li><a href="Drug.jsp">Drug</a></li>
                         <li><a href="Payment.aspx">Payment</a></li>
                     </ul>
                 </nav>

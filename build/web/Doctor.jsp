@@ -31,21 +31,6 @@
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Doctor</h2>
-<!--                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
-                          </li>
-                          <li><a href="#">Settings 2</a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>
-                    </ul>-->
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -105,10 +90,9 @@
                             out.println("<td>"+DOB+"</td>");
                             out.println("<td>"+DoctorPhone+"</td>");
                             out.println("<td>");
-                            out.println("<a role='button' class='btn btn-info' href='AddDoctor.jsp?status=update&id="+idDoctor+"' >Modify </a>");
+                            out.println("<a role='button' class='btn btn-info' href='AddDoctor.jsp?status=Update&id="+idDoctor+"' >Modify </a>");
                             out.println("<a role='button' class='btn btn-danger' href='delete_book.jsp?id="+idDoctor+"'>Delete </a>");
                             out.println("</td>");
-                            
                             out.println("</tr>");
                         }
                     }
@@ -124,8 +108,12 @@
                 </div>
               </div>
             </div>
-                      
-    <script src="assets/js/jquery-3.1.1.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+                      <script>
+$(document).ready(function() {
+    $('#datatable-fixed-header').DataTable( {
+        "lengthMenu": [[5, 15, 25, 50, -1], [5, 15, 25, 50, "All"]]
+    } );
+} );
+                      </script>
     </body>
 </html>

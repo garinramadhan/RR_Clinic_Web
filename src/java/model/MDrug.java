@@ -152,12 +152,14 @@ public class MDrug implements InDrug{
     
     public ArrayList tableDrug(){
         ArrayList data = new ArrayList();
+        obj_koneksi.openConnection();
         String sql = "select * from Recipe.Drug";
         try {
             Statement statement = obj_koneksi.con.createStatement();
             ResultSet rs = statement.executeQuery(sql);
              while(rs.next())
              {
+                 
                 data.add(rs.getString(1));
                 data.add(rs.getString(2));
                 data.add(rs.getString(3));
@@ -167,6 +169,39 @@ public class MDrug implements InDrug{
              }
         } catch (SQLException ex) {
             System.out.println("Error: " + ex);
+        }
+        return data;
+    }
+    
+    public ArrayList getRecord()
+    {
+        ArrayList data = new ArrayList();
+        try
+        {
+            obj_koneksi.openConnection();
+            String str = "select * from Recipe.Drug where Id_Drug = ?";
+            PreparedStatement pr = obj_koneksi.con.prepareStatement(str);
+            pr.setString(1, DrugID);
+            ResultSet rs = pr.executeQuery();
+            while(rs.next())
+            {
+                 this.setDrugID(rs.getString(1));
+                 this.setDrugName(rs.getString(2));
+                 this.setDrugType(rs.getString(3));
+                 this.setDrugStock(rs.getInt(4));
+                 this.setDrugEXP(rs.getString(5));
+                 this.setDrugPrice(rs.getDouble(6));
+                 data.add(this.getDrugID());
+                 data.add(this.getDrugName());
+                 data.add(this.getDrugType());
+                 data.add(this.getDrugStock());
+                 data.add(this.getDrugEXP());
+                 data.add(this.getDrugPrice());
+            }
+        }
+        catch(SQLException ex)
+        {
+            System.out.println(ex.getMessage());
         }
         return data;
     }
