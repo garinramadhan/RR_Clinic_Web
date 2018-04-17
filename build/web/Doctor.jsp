@@ -12,6 +12,17 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>RR Clinic</title>
+        
+        <link href="assets/css/style.css" rel="stylesheet" />
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="assets/css/Style.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.css"/>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js"></script>
+
     </head>
     <body>
         <div class="row">             
@@ -20,7 +31,7 @@
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Doctor</h2>
-                    <ul class="nav navbar-right panel_toolbox">
+<!--                    <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
                       <li class="dropdown">
@@ -34,7 +45,7 @@
                       </li>
                       <li><a class="close-link"><i class="fa fa-close"></i></a>
                       </li>
-                    </ul>
+                    </ul>-->
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -94,9 +105,8 @@
                             out.println("<td>"+DOB+"</td>");
                             out.println("<td>"+DoctorPhone+"</td>");
                             out.println("<td>");
-                            out.println("<a href='view_book.jsp?id="+idDoctor+"'>View </a>");
-                            out.println("<a href='edit_book.jsp?id="+idDoctor+"'>Modify </a>");
-                            out.println("<a href='delete_book.jsp?id="+idDoctor+"'>Delete </a>");
+                            out.println("<a role='button' class='btn btn-info' href='AddDoctor.jsp?status=update&id="+idDoctor+"' >Modify </a>");
+                            out.println("<a role='button' class='btn btn-danger' href='delete_book.jsp?id="+idDoctor+"'>Delete </a>");
                             out.println("</td>");
                             
                             out.println("</tr>");
@@ -114,5 +124,8 @@
                 </div>
               </div>
             </div>
+                      
+    <script src="assets/js/jquery-3.1.1.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
     </body>
 </html>
