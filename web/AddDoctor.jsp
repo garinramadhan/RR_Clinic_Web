@@ -26,7 +26,15 @@
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.css"/>
         <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js"></script>
     <center>
-    <h2>Add / Update Doctor</h2>
+        <%
+                              String status;
+                          status = request.getParameter("status");
+                          if(status.equals("Add")){%>
+                              <h2>Add Doctor</h2>
+                              <%}else if(status.equals("Update")){%>
+                                  <h2>Update Doctor</h2>
+                              <%}
+    %>
     </center>
     <br>
     </head>
@@ -100,8 +108,6 @@
                 </div>
 
                               <%
-                              String status;
-                          status = request.getParameter("status");
                           if(status != null){
                             if(status.equals("Add") && status != null){%>
                                <div class="form-group">
