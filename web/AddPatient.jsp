@@ -37,7 +37,7 @@
 
     </head>
     <body>
-        <form name="PatientForm" method="post" action="AddDoctor">
+        <form name="PatientForm" method="post" action="AddPatient">
         <div class="container form-horizontal">
             <div class="row">
                 <div class="col-md-7 col-md-offset-3">
