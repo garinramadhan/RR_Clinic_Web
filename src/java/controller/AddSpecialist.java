@@ -53,9 +53,9 @@ public class AddSpecialist extends HttpServlet {
                 md.setSpcFare(Double.parseDouble(request.getParameter("txtFare")));
                 int i = md.doInsert();
                 if(i > 0){
-                    response.sendRedirect("Drug.jsp?ket=Sukses");
+                    response.sendRedirect("Specialist.jsp?ket=Sukses");
                 }else{
-                    response.sendRedirect("Drug.jsp?ket=Gagal");
+                    response.sendRedirect("Specialist.jsp?ket=Gagal");
                 }
             }
         }
