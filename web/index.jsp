@@ -18,15 +18,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>RR Clinic</title>
 
+<!--===============================================================================================-->
     <link href="assets/css/style.css" rel="stylesheet" />
     <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="assets/css/Style.css" rel="stylesheet" />
+<!--===============================================================================================-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.css"/>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js"></script>
+<!--===============================================================================================-->
     </head>
     <body>
         <header>
@@ -35,12 +37,12 @@
             <div class="jw-drawer">
                 <nav>
                     <ul>
-                        <li><a href="Dashboard.aspx">Dashboard</a></li>
-                        <li><a href="Specialist.jsp">Specialist</a></li>
+                        <li><a href="index.jsp">Dashboard</a></li>
+                        <li><a id="dspc" href="#">Specialist</a></li>
                         <li><a id="ddoctor" href="#">Doctor</a></li>
-                        <li><a href="Patient.jsp">Patient</a></li>
-                        <li><a href="Treatment.aspx">Treatment</a></li>
-                        <li><a href="Recipe.jsp">Recipe</a></li>
+                        <li><a id="dpat" href="#">Patient</a></li>
+                        <li><a id="dtrt" href="#">Treatment</a></li>
+                        <li><a id="drcp" href="#">Recipe</a></li>
                         <!--
                         <li class="dropdown">
                             <a href="#" type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Recipe<span class="caret"></span></a>
@@ -49,7 +51,7 @@
                             </ul>
                         </li>
                         !-->
-                        <li><a href="Drug.jsp">Drug</a></li>
+                        <li><a id="ddrug" href="#">Drug</a></li>
                         <li><a href="Payment.aspx">Payment</a></li>
                     </ul>
                 </nav>
@@ -122,30 +124,46 @@
             </div>
         </div>
     </form>
-
+<!--===============================================================================================-->
     <script src="assets/js/jquery-3.1.1.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
-    
+<!--===============================================================================================-->
     <script type="text/javascript">
-      <script>
-$(document).ready(function() {
-    $('#datatable-fixed-header').DataTable( {
-        "lengthMenu": [[5, 15, 25, 50, -1], [5, 15, 25, 50, "All"]]
-    } );
-} );
-                      </script>
+        $(document).ready(function() {
+            $('#datatable-fixed-header').DataTable( {
+                "lengthMenu": [[5, 15, 25, 50, -1], [5, 15, 25, 50, "All"]]
+            } );
+        } );
     </script>
+<!--===============================================================================================-->    
     <script type="text/javascript">
         $(function () {
             $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
+<!--===============================================================================================-->
     <script>
     $(document).ready(function(){
+        $('#dspc').click(function(){
+            $('#badan').load('Specialist.jsp');
+        });
         $('#ddoctor').click(function(){
             $('#badan').load('Doctor.jsp');
         });
+        $('#dpat').click(function(){
+            $('#badan').load('Patient.jsp');
+        });
+        $('#dtrt').click(function(){
+            $('#badan').load('Treatment.jsp');
+        });
+        $('#drcp').click(function(){
+            $('#badan').load('Recipe.jsp');
+        });
+        $('#ddrug').click(function(){
+            $('#badan').load('Drug.jsp');
+        });
     });
     </script>
+<!--===============================================================================================-->
 </body>
 </html>

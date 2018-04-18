@@ -13,15 +13,17 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Specialist</title>
         
+<!--===============================================================================================-->
         <link href="assets/dashboard/css/style.css" rel="stylesheet" />
         <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
         <link href="assets/css/Style.css" rel="stylesheet" />
+<!--===============================================================================================-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.css"/>
         <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js"></script>
+<!--===============================================================================================-->
         <center>
         <%
                               String status;
@@ -34,6 +36,7 @@
     %>
     </center>
     <br>
+<!--===============================================================================================-->
     </head>
     <body>
         <form name="SpecialistForm" method="post" action="AddSpecialist">
@@ -105,18 +108,21 @@
             </div>
         </div>
     </form>
+<!--===============================================================================================-->
     <script src="assets/js/jquery-3.1.1.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
     <script type="text/javascript">
       $(document).ready(function(){
         $('.table').DataTable();
       });
     </script>
+<!--===============================================================================================-->
     <script type="text/javascript">
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         })
     </script>
-
+<!--===============================================================================================-->
     </body>
 </html>
