@@ -39,7 +39,7 @@
     <br>
     </head>
     <body>
-    <form name="DoctorForm" method="post" action="AddDoctor">
+    <form name="DrugForm" method="post" action="AddDoctor">
         <div class="container form-horizontal">
             <div class="row">
                 <div class="col-md-7 col-md-offset-3">

@@ -11,16 +11,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>RR Clinic</title>
         
         <center>
         <%
                               String status;
                           status = request.getParameter("status");
                           if(status.equals("Add")){%>
-                              <h2>Add Doctor</h2>
+                              <h2>Add Patient</h2>
                               <%}else if(status.equals("Update")){%>
-                                  <h2>Update Doctor</h2>
+                                  <h2>Update Patient</h2>
                               <%}
     %>
     </center>
@@ -60,7 +60,7 @@
                         %>
                     <fieldset disabled>
                         <div class="form-group">
-                          <label class="col-md-3 control-label" for="txtIdDoctor">ID Doctor</label>
+                          <label class="col-md-3 control-label" for="txtIdPatient">ID Patient</label>
                           <div class="col-md-9">
                               <input type="text" id="txtID" name="txtID" required="required" class="form-control col-md-7 col-xs-12" value="<%=PatientID%>">
                           </div>

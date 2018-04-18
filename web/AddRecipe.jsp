@@ -1,17 +1,17 @@
 <%-- 
-    Document   : AddSpecialist
-    Created on : Apr 17, 2018, 9:05:59 PM
+    Document   : AddRecipe
+    Created on : Apr 18, 2018, 1:06:50 AM
     Author     : GR
 --%>
 
-<%@page import="model.MSpecialist"%>
+<%@page import="model.MRecipe"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Specialist</title>
+        <title>RR Clinic</title>
         
         <link href="assets/dashboard/css/style.css" rel="stylesheet" />
         <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
@@ -27,65 +27,81 @@
                               String status;
                           status = request.getParameter("status");
                           if(status.equals("Add")){%>
-                              <h2>Add Specialist</h2>
+                              <h2>Add Recipe</h2>
                               <%}else if(status.equals("Update")){%>
-                                  <h2>Update Specialist</h2>
+                                  <h2>Update Recipe</h2>
                               <%}
     %>
     </center>
     <br>
     </head>
     <body>
-        <form name="SpecialistForm" method="post" action="AddSpecialist">
+        <form name="DrugForm" method="post" action="AddDoctor">
         <div class="container form-horizontal">
             <div class="row">
                 <div class="col-md-7 col-md-offset-3">
                 <div class="custom">
                     <%
-                        String idSpecialist = "", Specialist = "";
-                        Double Fare = 0.0;
-                        MSpecialist mSpc = new MSpecialist();
+                        String idRcpDtl, idRecipe = "", DrugId = "",Dose ="", dose = "";
+                        Integer Qty=0;
+                        Double subTot = 0.0;
+                        MRecipe mRcp = new MRecipe();
                         if(status.equals("Update")){
-                            idSpecialist = request.getParameter("id");
-                            ArrayList spc = new ArrayList();
-                            mSpc.setSpcID(idSpecialist);
-                            spc = mSpc.getRecord();
-                            idSpecialist = (String)spc.get(0);
-                            Specialist = (String)spc.get(1);
-                            Fare = (Double)spc.get(2);
+                            idRcpDtl = request.getParameter("id");
+                            ArrayList rcp = new ArrayList();
+                            mRcp.setRecipeDetID(idRcpDtl);
+                            rcp = mRcp.getRecordUpdate();
+                            idRcpDtl = (String)rcp.get(0);
+                            idRecipe = (String)rcp.get(1);
+                            DrugId = (String)rcp.get(2);
+                            Qty = (Integer)rcp.get(3);
+                            Dose = (String)rcp.get(4);
+                            subTot = (Double)rcp.get(5);
                         }else{
-                            idSpecialist = mSpc.autoid();
+                            idRcpDtl = mRcp.autoid();
                         }
                         %>
                     <fieldset disabled>
                         <div class="form-group">
-                          <label class="col-md-3 control-label" for="txtIdSpecialist">ID Specialist</label>
+                          <label class="col-md-3 control-label" for="txtIdDoctor">ID Recipe Detail</label>
                           <div class="col-md-9">
-                              <input type="text" id="txtID" name="txtID" required="required" class="form-control col-md-7 col-xs-12" value="<%=idSpecialist%>">
+                              <input type="text" id="txtRecipeID" name="txtID" required="required" class="form-control col-md-7 col-xs-12" value="<%=idRcpDtl%>">
                           </div>
                         </div>
                     </fieldset>
                 
+                <div class="form-group">
+                  <label class="col-md-3 control-label" for="txtDoctorname">ID Recipe</label>
+                  <div class="col-md-9">
+                    <input type="text" id="txtRecipe" name="txtRecipe" required="required" class="form-control col-md-7 col-xs-12" value="<%=idRecipe%>">
+                  </div>
+                </div>
                 
                 <div class="form-group">
-                  <label class="col-md-3 control-label" for="txtSpecialist">Specialist</label>
+                  <label class="col-md-3 control-label" for="txtDateofbirth">Drug ID</label>
                   <div class="col-md-9">
-                    <input type="text" id="txtName" name="txtName" required="required" class="form-control col-md-7 col-xs-12" value="<%=Specialist%>">
+                      <input type="text" name="txtName" name="txtName" required="required" class="form-control col-md-7 col-xs-12" value="<%=DrugId%>">
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label class="col-md-3 control-label" for="txtFare">Fare</label>
+                  <label class="col-md-3 control-label" for="txtPhonenumber">Quantity</label>
                   <div class="col-md-9">
-                      <input type="text" id="txtPhone" name="txtFare" required="required" class="form-control col-md-7 col-xs-12" value="<%=Fare%>">
+                      <input type="text" id="txtPhone" name="txtPhone" required="required" class="form-control col-md-7 col-xs-12" value="<%=Qty%>">
+                  </div>
+                </div>
+                  
+                <div class="form-group">
+                  <label class="col-md-3 control-label" for="txtPhonenumber">Dose</label>
+                  <div class="col-md-9">
+                      <input type="text" id="txtType" name="txtPhone" required="required" class="form-control col-md-7 col-xs-12" value="<%=Dose%>">
                   </div>
                 </div>
 
-                <%
-                    if(status != null){
-                    if(status.equals("Add") && status != null){
-                %>
-                <div class="form-group">
+                              <%
+                          if(status != null){
+                            if(status.equals("Add") && status != null){%>
+                               <div class="form-group">
                   <div class="col-md-12 text-right">
                       <input type="submit" value="Save" name="Btn">
                   </div>
@@ -117,6 +133,5 @@
             $('[data-toggle="tooltip"]').tooltip()
         })
     </script>
-
     </body>
 </html>

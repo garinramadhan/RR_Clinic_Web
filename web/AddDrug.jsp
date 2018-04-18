@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>RR Clinic</title>
         
         <link href="assets/dashboard/css/style.css" rel="stylesheet" />
         <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
@@ -27,16 +27,16 @@
                               String status;
                           status = request.getParameter("status");
                           if(status.equals("Add")){%>
-                              <h2>Add Doctor</h2>
+                              <h2>Add Drug</h2>
                               <%}else if(status.equals("Update")){%>
-                                  <h2>Update Doctor</h2>
+                                  <h2>Update Drug</h2>
                               <%}
     %>
     </center>
     <br>
     </head>
     <body>
-        <form name="DoctorForm" method="post" action="AddDoctor">
+        <form name="DoctorForm" method="post" action="AddDrug">
         <div class="container form-horizontal">
             <div class="row">
                 <div class="col-md-7 col-md-offset-3">
@@ -78,7 +78,7 @@
                 </div>
                   
                 <div class="form-group">
-                  <label class="col-md-3 control-label" for="DDIdSpecialist">Drug Type</label>
+                  <label class="col-md-3 control-label" for="DDDrugType">Drug Type</label>
                   <div class="col-md-9">
                      <select name="type">
                          <option>Capsule</option>
@@ -112,7 +112,7 @@
                               <%
                           if(status != null){
                             if(status.equals("Add") && status != null){%>
-                               <div class="form-group">
+                <div class="form-group">
                   <div class="col-md-12 text-right">
                       <input type="submit" value="Save" name="Btn">
                   </div>

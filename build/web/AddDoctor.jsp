@@ -26,20 +26,41 @@
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.css"/>
         <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js"></script>
     <center>
-    <h2>Add / Update Doctor</h2>
+        <%
+                              String status;
+                          status = request.getParameter("status");
+                          if(status.equals("Add")){%>
+                              <h2>Add Doctor</h2>
+                              <%}else if(status.equals("Update")){%>
+                                  <h2>Update Doctor</h2>
+                              <%}
+    %>
     </center>
     <br>
     </head>
     <body>
-    <form name="DoctorForm" method="post" action="AddDoctor">
+    <form name="DrugForm" method="post" action="AddDoctor">
         <div class="container form-horizontal">
             <div class="row">
                 <div class="col-md-7 col-md-offset-3">
                 <div class="custom">
                     <%
-                        String idDoctor;
+                        String idDoctor, idSpecialist = "", doctorName = "", gender = "", dob = "", phone = "";
                         MDoctor mDoc = new MDoctor();
-                        idDoctor = mDoc.autoid();
+                        if(status.equals("Update")){
+                            idDoctor = request.getParameter("id");
+                            ArrayList dok = new ArrayList();
+                            mDoc.setDoctorID(idDoctor);
+                            dok = mDoc.getRecord();
+                            idDoctor = (String) dok.get(0);
+                            idSpecialist = (String)dok.get(1);
+                            doctorName = (String)dok.get(2);
+                            gender = (String)dok.get(3);
+                            dob = (String)dok.get(4);
+                            phone = (String)dok.get(5);
+                        }else{
+                            idDoctor = mDoc.autoid();
+                        }
                         %>
                     <fieldset disabled>
                         <div class="form-group">
@@ -73,7 +94,7 @@
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="txtDoctorname">Doctor Name</label>
                   <div class="col-md-9">
-                    <input type="text" id="txtName" name="txtName" required="required" class="form-control col-md-7 col-xs-12" value="">
+                    <input type="text" id="txtName" name="txtName" required="required" class="form-control col-md-7 col-xs-12" value="<%=doctorName%>">
                   </div>
                 </div>
 
@@ -88,20 +109,18 @@
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="txtDateofbirth">Date of Birth</label>
                   <div class="col-md-9">
-                      <input type="date" name="dob">
+                      <input type="date" name="dob" value="<%=dob%>">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="txtPhonenumber">Phone Number</label>
                   <div class="col-md-9">
-                    <input type="text" id="txtPhone" name="txtPhone" required="required" class="form-control col-md-7 col-xs-12" value="">
+                      <input type="text" id="txtPhone" name="txtPhone" required="required" class="form-control col-md-7 col-xs-12" value="<%=phone%>">
                   </div>
                 </div>
 
                               <%
-                              String status;
-                          status = request.getParameter("status");
                           if(status != null){
                             if(status.equals("Add") && status != null){%>
                                <div class="form-group">

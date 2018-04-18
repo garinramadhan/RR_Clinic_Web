@@ -27,7 +27,6 @@
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.css"/>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js"></script>
-
     </head>
     <body>
         <header>
@@ -38,10 +37,10 @@
                     <ul>
                         <li><a href="Dashboard.aspx">Dashboard</a></li>
                         <li><a href="Specialist.jsp">Specialist</a></li>
-                        <li><a href="Doctor.jsp">Doctor</a></li>
+                        <li><a id="ddoctor" href="#">Doctor</a></li>
                         <li><a href="Patient.jsp">Patient</a></li>
                         <li><a href="Treatment.aspx">Treatment</a></li>
-                        <li><a href="Recipe.aspx">Recipe</a></li>
+                        <li><a href="Recipe.jsp">Recipe</a></li>
                         <!--
                         <li class="dropdown">
                             <a href="#" type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Recipe<span class="caret"></span></a>
@@ -118,20 +117,35 @@
 		</div>
 		<div class="clearfix"></div>
             </div>
+            <div id="badan" class="four-grids" style="margin-right: 15px">
+            <!--Konten-->
+            </div>
         </div>
     </form>
 
     <script src="assets/js/jquery-3.1.1.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
+    
     <script type="text/javascript">
-      $(document).ready(function(){
-        $('.table').DataTable();
-      });
+      <script>
+$(document).ready(function() {
+    $('#datatable-fixed-header').DataTable( {
+        "lengthMenu": [[5, 15, 25, 50, -1], [5, 15, 25, 50, "All"]]
+    } );
+} );
+                      </script>
     </script>
     <script type="text/javascript">
         $(function () {
             $('[data-toggle="tooltip"]').tooltip();
         });
+    </script>
+    <script>
+    $(document).ready(function(){
+        $('#ddoctor').click(function(){
+            $('#badan').load('Doctor.jsp');
+        });
+    });
     </script>
 </body>
 </html>

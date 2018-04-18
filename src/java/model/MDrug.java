@@ -91,11 +91,11 @@ public class MDrug implements InDrug{
             obj_koneksi.openConnection();
             String str = "exec pcdDrug ?,?,?,?,?";
             PreparedStatement pr = obj_koneksi.con.prepareStatement(str);
-            pr.setString(2, DrugName);
-            pr.setString(3, DrugType);
-            pr.setInt(4, DrugStock);
-            pr.setString(5, DrugEXP);
-            pr.setDouble(6, DrugPrice);
+            pr.setString(1, DrugName);
+            pr.setString(2, DrugType);
+            pr.setInt(3, DrugStock);
+            pr.setString(4, DrugEXP);
+            pr.setDouble(5, DrugPrice);
             i = pr.executeUpdate();
         }
         catch(SQLException ex)

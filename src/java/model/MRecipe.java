@@ -134,9 +134,33 @@ public class MRecipe implements InRecipe {
         return i;
     }
     
-    public ArrayList tableRecipe(){
+    public ArrayList getRecordUpdate(){
+        obj_koneksi.openConnection();
         ArrayList data = new ArrayList();
-        String sql = "select a.Id_Recipe, b.Patient_Name, c.Diagnose from Patient.Treatment c join Patient.Patient b on c.Id_Patient = b.Id_Patient join Recipe.Recipe a on c.Id_Recipe = a.Id_Recipe join Patient.Payment x on c.Id_Treatment = x.Id_Treatment where x.isPay = 0";
+        String sql = "select * from Recipe.RecipeDetail where Id_RecipeDetail  = ?";
+        try {
+            PreparedStatement pr = obj_koneksi.con.prepareStatement(sql);
+            pr.setString(1, RecipeDetID);
+            ResultSet rs = pr.executeQuery();
+             while(rs.next())
+             {
+                 data.add(rs.getString(1));
+                 data.add(rs.getString(2));
+                 data.add(rs.getString(3));
+                 data.add(rs.getInt(4));
+                 data.add(rs.getString(5));
+                 data.add(rs.getDouble(6));
+             }
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex);
+        }
+        return data;
+    }
+    
+    public ArrayList tableRecipe(){
+        obj_koneksi.openConnection();
+        ArrayList data = new ArrayList();
+        String sql = "select b.Id_RecipeDetail, a.Id_Recipe, e.Patient_Name, c.DrugName, c.DrugType, b.Qty, d.Diagnose from Recipe.Recipe a join Recipe.RecipeDetail b on b.Id_Recipe = a.Id_Recipe join Recipe.Drug c on b.Id_Drug = c.Id_Drug join Patient.Treatment d on d.Id_Recipe = a.Id_Recipe join Patient.Patient e on e.Id_Patient = d.Id_Patient";
         try {
             Statement statement = obj_koneksi.con.createStatement();
             ResultSet rs = statement.executeQuery(sql);
@@ -145,6 +169,10 @@ public class MRecipe implements InRecipe {
                  data.add(rs.getString(1));
                  data.add(rs.getString(2));
                  data.add(rs.getString(3));
+                 data.add(rs.getString(4));
+                 data.add(rs.getString(5));
+                 data.add(rs.getString(6));
+                 data.add(rs.getString(7));
              }
         } catch (SQLException ex) {
             System.out.println("Error: " + ex);
@@ -169,6 +197,30 @@ public class MRecipe implements InRecipe {
              }
         } catch (SQLException ex) {
             System.out.println("Error: " + ex);
+        }
+        return data;
+    }
+    
+    public ArrayList getRecord()
+    {
+        ArrayList data = new ArrayList();
+        try
+        {
+            obj_koneksi.openConnection();
+            String str = "select * from Doctor.Doctor where Id_Doctor = ?";
+            PreparedStatement pr = obj_koneksi.con.prepareStatement(str);
+            pr.setString(1, RecipeID);
+            ResultSet rs = pr.executeQuery();
+            while(rs.next())
+            {
+                 data.add(rs.getString(1));
+                 data.add(rs.getString(2));
+                 data.add(rs.getString(3));
+            }
+        }
+        catch(SQLException ex)
+        {
+            System.out.println(ex.getMessage());
         }
         return data;
     }
