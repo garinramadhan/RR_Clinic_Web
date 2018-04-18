@@ -135,6 +135,24 @@ public class MPatient implements InPatient{
         return i;
     }
     
+    public ArrayList selectNamePatient(){
+        obj_koneksi.openConnection();
+        ArrayList data = new ArrayList();
+        String sql = "select * from Patient.Patient";
+        try {
+            Statement statement = obj_koneksi.con.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+             while(rs.next())
+             {
+                 data.add(rs.getString(1));
+                 data.add(rs.getString(2));
+             }
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex);
+        }
+        return data;
+    }
+    
     public ArrayList tablePatient(){
         obj_koneksi.openConnection();
         ArrayList data = new ArrayList();

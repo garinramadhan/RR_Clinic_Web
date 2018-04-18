@@ -26,6 +26,16 @@
 <!--===============================================================================================-->
     </head>
     <body>
+        <%               
+            String user = (String)session.getAttribute("username");
+            String role = (String)session.getAttribute("role");
+            if(user != null) {
+                //out.println("Welcome, " + user);
+            }
+            else {
+                response.sendRedirect("login.jsp");
+            }
+        %>
         <div class="row">             
              <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
@@ -56,7 +66,10 @@
                       %>
                       Doctor Record.
                     </p>
-                    <a role="button" class="btn btn-default col-sm-1" href="AddDoctor.jsp?status=Add&id=">Add..</a><br><br>
+                    <%if(role.equals("1")){
+                        %><a role="button" class="btn btn-default col-sm-1" href="AddDoctor.jsp?status=Add&id=">Add..</a><br><br><%
+                    }%>
+                    
                     <table id="datatable-fixed-header" class="table table-striped table-bordered">
                       <thead>
                         <tr>
@@ -66,7 +79,9 @@
                           <th>Gender</th>
                           <th>Date of Birth</th>
                           <th>Phone</th>
-                          <th>Action</th>
+                          <%if(role.equals("1")){
+                              %><th>Action</th><%
+                          }%>
                         </tr>
                       </thead>
                       <tbody>
@@ -90,10 +105,12 @@
                             out.println("<td>"+DoctorGender+"</td>");
                             out.println("<td>"+DOB+"</td>");
                             out.println("<td>"+DoctorPhone+"</td>");
+                            if(role.equals("1")){
                             out.println("<td>");
                             out.println("<a role='button' class='btn btn-info' href='AddDoctor.jsp?status=Update&id="+idDoctor+"' >Modify </a>");
                             out.println("<a role='button' class='btn btn-danger' href='delete_book.jsp?id="+idDoctor+"'>Delete </a>");
                             out.println("</td>");
+                            }
                             out.println("</tr>");
                         }
                     }

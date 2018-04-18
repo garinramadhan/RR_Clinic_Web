@@ -27,6 +27,15 @@
     </head>
     </head>
     <body>
+        <%               
+            String user = (String)session.getAttribute("username");
+            if(user != null) {
+                //out.println("Welcome, " + user);
+            }
+            else {
+                response.sendRedirect("login.jsp");
+            }
+        %>
         <div class="row">             
              <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
@@ -62,39 +71,45 @@
                       <thead>
                         <tr>
                           <th>ID Treatment</th>
-                          <th>ID Patient</th>
-                          <th>ID Doctor</th>
+                          <th>Patient Name</th>
+                          <th>Doctor Name</th>
                           <th>ID Recipe</th>
                           <th>Diagnose</th>
                           <th>Date Treatment</th>
-                          <th>Action</th>
+                          <!--<th>Action</th>-->
                         </tr>
                       </thead>
                       <tbody>
                       <%
-//                      try{
-//                        MTreatment mt = new MTreatment();
-//                        ArrayList data = mt.tableSpecialist();
-//                        for(int i = 0;i < data.size()-1;i+=3)
-//                        {
-//                            String idTretment = (String)data.get(i);
-//                            String idPatient = (String)data.get(i+1);
-//                            Double idDoctor = (Double)data.get(i+2);
-//                            
-//                            out.println("<tr>");
-//                            out.println("<td>"+idSpecialist+"</td>");
-//                            out.println("<td>"+SpcName+"</td>");
-//                            out.println("<td>"+Fare+"</td>");
+                      try{
+                        MTreatment mt = new MTreatment();
+                        ArrayList data = mt.tableTreatment();
+                        for(int i = 0;i < data.size()-1;i+=6)
+                        {
+                            String idTretment = (String)data.get(i);
+                            String patientName = (String)data.get(i+1);
+                            String doctorName = (String)data.get(i+2);
+                            String idRecipe = (String)data.get(i+3);
+                            String diagnose = (String)data.get(i+4);
+                            String dateTreatment = (String)data.get(i+5);
+                            
+                            out.println("<tr>");
+                            out.println("<td>"+idTretment+"</td>");
+                            out.println("<td>"+patientName+"</td>");
+                            out.println("<td>"+doctorName+"</td>");
+                            out.println("<td>"+idRecipe+"</td>");
+                            out.println("<td>"+diagnose+"</td>");
+                            out.println("<td>"+dateTreatment+"</td>");
 //                            out.println("<td>");
 //                            out.println("<a role='button' class='btn btn-info' href='AddTreatment.jsp?status=Update&id="+idSpecialist+"' >Modify </a>");
 //                            out.println("<a role='button' class='btn btn-danger' href='delete_book.jsp?id="+idSpecialist+"'>Delete </a>");
 //                            out.println("</td>");
-//                            out.println("</tr>");
-//                        }
-//                    }
-//                    catch(Exception ex) {
-//                        out.println("Data Gagal Ditampilkan : " + ex);
-//                    }
+                            out.println("</tr>");
+                        }
+                    }
+                    catch(Exception ex) {
+                        out.println("Data Gagal Ditampilkan : " + ex);
+                    }
                       %>                      
                       </tbody>
                     </table>

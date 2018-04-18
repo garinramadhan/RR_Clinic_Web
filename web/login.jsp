@@ -36,6 +36,17 @@
 <!--===============================================================================================-->
     </head>
     <body>
+        <%               
+            String user = (String)session.getAttribute("username");
+            if(user != null) {
+                //out.println("Welcome, " + user);
+                response.sendRedirect("index.jsp");
+            }
+            else {
+                
+            }
+        %>
+        <form action="Login" method="post" id="login">
         <div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-t-50 p-b-90">
@@ -82,8 +93,8 @@
 		</div>
 	</div>
 	
-
-	<div id="dropDownSelect1"></div>
+</form>
+	<!--<div id="dropDownSelect1"></div>-->
 	
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>

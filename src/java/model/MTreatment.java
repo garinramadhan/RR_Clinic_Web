@@ -191,6 +191,28 @@ public class MTreatment implements InTreatment {
         return data;
     }
     
+    public ArrayList tableTreatment(){
+        obj_koneksi.openConnection();
+        ArrayList data = new ArrayList();
+        String sql = "select a.Id_Treatment as Id_Treatment, b.Patient_Name as Patient_Name, c.DoctorName as DoctorName, a.Id_Recipe as Id_Recipe, a.Diagnose as Diagnose, a.DateTreatment as DateTreatment from Patient.Treatment a join Patient.Patient b on a.Id_Patient = b.Id_Patient join Doctor.Doctor c on a.Id_Doctor = c.Id_Doctor";
+        try {
+            Statement statement = obj_koneksi.con.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+             while(rs.next())
+             {
+                 data.add(rs.getString(1));
+                 data.add(rs.getString(2));
+                 data.add(rs.getString(3));
+                 data.add(rs.getString(4));
+                 data.add(rs.getString(5));
+                 data.add(rs.getString(6));
+             }
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex);
+        }
+        return data;
+    }
+    
     public ArrayList tablePatient(){
         ArrayList data = new ArrayList();
         String sql = "select * from Patient.Patient";
@@ -212,8 +234,9 @@ public class MTreatment implements InTreatment {
     }
     
     public ArrayList tableDoctor(){
+        obj_koneksi.openConnection();
         ArrayList data = new ArrayList();
-        String sql = "select a.Id_Doctor, a.DoctorName, b.Id_Specialist, a.DoctorGender from Doctor.Doctor a join Doctor.Specialist b on a.Id_Specialist = b.Id_Specialist";
+        String sql = "select a.Id_Doctor, a.DoctorName, b.Specialist from Doctor.Doctor a join Doctor.Specialist b on a.Id_Specialist = b.Id_Specialist";
         try {
             Statement statement = obj_koneksi.con.createStatement();
             ResultSet rs = statement.executeQuery(sql);
@@ -222,7 +245,6 @@ public class MTreatment implements InTreatment {
                  data.add(rs.getString(1));
                  data.add(rs.getString(2));
                  data.add(rs.getString(3));
-                 data.add(rs.getString(4));
              }
         } catch (SQLException ex) {
             System.out.println("Error: " + ex);

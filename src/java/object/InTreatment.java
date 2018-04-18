@@ -31,4 +31,5 @@ public interface InTreatment {
     public String autoidRecipe();
     public ArrayList tablePatient();
     public ArrayList tableDoctor();
+    public ArrayList tableTreatment();
 }

@@ -28,10 +28,21 @@
         <%
                               String status;
                           status = request.getParameter("status");
-                          if(status.equals("Add")){%>
-                              <h2>Add Drug</h2>
-                              <%}else if(status.equals("Update")){%>
-                                  <h2>Update Drug</h2>
+                          String role = (String)session.getAttribute("role");
+                          if(status.equals("Add")){
+                              if(role.equals("0")){
+                                        response.sendRedirect("index.jsp");
+                                      }else{
+                                        %> <h2>Add Drug</h2> <%
+                                    }
+                              }else if(status.equals("Update")){
+                                    if(role.equals("0")){
+                                        response.sendRedirect("index.jsp");
+                                      }else{
+                                        %> <h2>Update Drug</h2> <%
+                                    }
+                              %>
+                                  
                               <%}
     %>
     </center>
@@ -40,6 +51,15 @@
     </head>
     <body>
         <form name="DoctorForm" method="post" action="AddDrug">
+            <%               
+            String user = (String)session.getAttribute("username");
+            if(user != null) {
+                //out.println("Welcome, " + user);
+            }
+            else {
+                response.sendRedirect("login.jsp");
+            }
+        %>
         <div class="container form-horizontal">
             <div class="row">
                 <div class="col-md-7 col-md-offset-3">
@@ -64,14 +84,14 @@
                             idDrug = mDrg.autoid();
                         }
                         %>
-                    <fieldset disabled>
+                    
                         <div class="form-group">
                           <label class="col-md-3 control-label" for="txtIdDrug">ID Drug</label>
                           <div class="col-md-9">
                               <input type="text" id="txtID" name="txtID" required="required" class="form-control col-md-7 col-xs-12" value="<%=idDrug%>">
                           </div>
                         </div>
-                    </fieldset>
+                    
                 
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="txtDrugname">Drug Name</label>

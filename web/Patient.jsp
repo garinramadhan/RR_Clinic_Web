@@ -26,6 +26,16 @@
 <!--===============================================================================================-->
     </head>
     <body>
+        <%               
+            String user = (String)session.getAttribute("username");
+            String role = (String)session.getAttribute("role");
+            if(user != null) {
+                //out.println("Welcome, " + user);
+            }
+            else {
+                response.sendRedirect("login.jsp");
+            }
+        %>
         <div class="row">             
              <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
@@ -65,7 +75,9 @@
                           <th>Date Of Birth</th>
                           <th>Address</th>
                           <th>Gender</th>
-                          <th>Action</th>
+                          <%if(role.equals("1")){
+                              %><th>Action</th><%
+                          }%>
                         </tr>
                       </thead>
                       <tbody>
@@ -87,10 +99,12 @@
                             out.println("<td>"+DOB+"</td>");
                             out.println("<td>"+Address+"</td>");
                             out.println("<td>"+Gender+"</td>");
-                            out.println("<td>");
-                            out.println("<a role='button' class='btn btn-info' href='AddPatient.jsp?status=Update&id="+idPatient+"' >Modify </a>");
-                            out.println("<a role='button' class='btn btn-danger' href='delete_book.jsp?id="+idPatient+"'>Delete </a>");
-                            out.println("</td>");
+                            if(role.equals("1")){
+                                out.println("<td>");
+                                out.println("<a role='button' class='btn btn-info' href='AddPatient.jsp?status=Update&id="+idPatient+"' >Modify </a>");
+                                out.println("<a role='button' class='btn btn-danger' href='delete_book.jsp?id="+idPatient+"'>Delete </a>");
+                                out.println("</td>");
+                            }
                             out.println("</tr>");
                         }
                     }

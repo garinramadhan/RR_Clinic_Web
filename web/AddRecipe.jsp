@@ -28,10 +28,17 @@
         <%
                               String status;
                           status = request.getParameter("status");
+                          String role = (String)session.getAttribute("role");
                           if(status.equals("Add")){%>
                               <h2>Add Recipe</h2>
-                              <%}else if(status.equals("Update")){%>
-                                  <h2>Update Recipe</h2>
+                              <%}else if(status.equals("Update")){
+                                    if(role.equals("0")){
+                                        response.sendRedirect("index.jsp");
+                                      }else{
+                                        %> <h2>Update Recipe</h2> <%
+                                    }
+                              %>
+                                  
                               <%}
     %>
     </center>
@@ -40,6 +47,15 @@
     </head>
     <body>
         <form name="DrugForm" method="post" action="AddDoctor">
+            <%               
+            String user = (String)session.getAttribute("username");
+            if(user != null) {
+                //out.println("Welcome, " + user);
+            }
+            else {
+                response.sendRedirect("login.jsp");
+            }
+        %>
         <div class="container form-horizontal">
             <div class="row">
                 <div class="col-md-7 col-md-offset-3">

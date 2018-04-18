@@ -31,6 +31,16 @@
 <!--===============================================================================================-->
     </head>
     <body>
+        <%               
+            String user = (String)session.getAttribute("username");
+            String role = (String)session.getAttribute("role");
+            if(user != null) {
+                //out.println("Welcome, " + user);
+            }
+            else {
+                response.sendRedirect("login.jsp");
+            }
+        %>
         <header>
             <input type="checkbox" id="tag-menu"/>
             <label class="menu-bar" for="tag-menu" data-toggle="tooltip" data-placement="bottom" title="Menu">R2 Clinic</label>
@@ -52,19 +62,17 @@
                         </li>
                         !-->
                         <li><a id="ddrug" href="#">Drug</a></li>
-                        <li><a href="Payment.aspx">Payment</a></li>
+                        <li><a id="dpay" href="#">Payment</a></li>
                     </ul>
                 </nav>
             </div>
             <ul class="white-color" style="float: right;" data-toggle="tooltip" data-placement="left" title="Account Setting">
                 <li class="dropdown no-bullets" style="margin-right: 40px;">
-                    <label class="menu-bar dropdown-toggle" for="tag-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="tvNama2">Hi, Account<span class="caret"></span></label>
+                    <label class="menu-bar dropdown-toggle" for="tag-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="tvNama2">Hi, <%=user%><span class="caret"></span></label>
                     
                     <ul class="dropdown-menu dropdown-color">
                         <li><a href="#">Change Password</a></li>
-                        <li>
-                            <input type="" Text="Logout" ID="btnLogout" OnClick="btnLogout_Click">
-                        </li>
+                        <li><a role="button" id="btnLogout" onclick="btnLogout_Click" href="#">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -161,6 +169,9 @@
         });
         $('#ddrug').click(function(){
             $('#badan').load('Drug.jsp');
+        });
+        $('#dpay').click(function(){
+            $('#badan').load('Payment.jsp');
         });
     });
     </script>

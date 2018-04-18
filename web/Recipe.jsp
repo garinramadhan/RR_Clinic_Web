@@ -26,6 +26,15 @@
 <!--===============================================================================================-->
     </head>
     <body>
+        <%               
+            String user = (String)session.getAttribute("username");
+            if(user != null) {
+                //out.println("Welcome, " + user);
+            }
+            else {
+                response.sendRedirect("login.jsp");
+            }
+        %>
         <div class="row">             
             
              <div class="col-md-12 col-sm-12 col-xs-12">
@@ -63,12 +72,12 @@
                         <tr>
                           <th>ID Recipe Detail</th>
                           <th>ID Recipe</th>
-                          <th>ID Drug</th>
+                          <th>Patient Name</th>
                           <th>Drug Name</th>
                           <th>Drug Type</th>
                           <th>Quantity</th>
                           <th>Diagnose</th>
-                          <th>Action</th>
+<!--                          <th>Action</th>-->
                         </tr>
                       </thead>
                       <tbody>
@@ -94,10 +103,10 @@
                             out.println("<td>"+drugType+"</td>");
                             out.println("<td>"+Qty+"</td>");
                             out.println("<td>"+diagnose+"</td>");
-                            out.println("<td>");
-                            out.println("<a role='button' class='btn btn-info' href='AddRecipe.jsp?status=Update&id="+idRecipedid+"' >Modify </a>");
-                            out.println("<a role='button' class='btn btn-danger' href='delete_book.jsp?id="+idRecipedid+"'>Delete </a>");
-                            out.println("</td>");
+//                            out.println("<td>");
+//                            out.println("<a role='button' class='btn btn-info' href='AddRecipe.jsp?status=Update&id="+idRecipedid+"' >Modify </a>");
+//                            out.println("<a role='button' class='btn btn-danger' href='delete_book.jsp?id="+idRecipedid+"'>Delete </a>");
+//                            out.println("</td>");
                             out.println("</tr>");
                         }
                     }

@@ -97,6 +97,7 @@ public class MPayment implements InPayment{
 
     @Override
     public ArrayList tablePayment(){
+        obj_koneksi.openConnection();
         ArrayList data = new ArrayList();
         String sql = "select x.Id_Payment, b.Patient_Name, a.Diagnose, x.PaymentDoctor, x.PaymentDrug, x.TotalPayment from Patient.Treatment a join Patient.Patient b on a.Id_Patient = b.Id_Patient join Patient.Payment x on a.Id_Treatment = x.Id_Treatment where x.isPay = '0'";
         try {
@@ -191,6 +192,7 @@ public class MPayment implements InPayment{
     }
     
     public ArrayList tablePaymentHistory(){
+        obj_koneksi.openConnection();
         ArrayList data = new ArrayList();
         String sql = "select x.Id_Payment, b.Patient_Name, a.Diagnose, x.PaymentDoctor, x.PaymentDrug, x.TotalPayment from Patient.Treatment a join Patient.Patient b on a.Id_Patient = b.Id_Patient join Patient.Payment x on a.Id_Treatment = x.Id_Treatment where x.isPay = '1'";
         try {
