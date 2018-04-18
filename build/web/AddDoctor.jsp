@@ -128,13 +128,13 @@
                             if(status.equals("Add") && status != null){%>
                                <div class="form-group">
                   <div class="col-md-12 text-right">
-                      <input type="submit" value="Save" name="Btn">
+                      <input type="submit" value="Save" name="Btn" class="btn btn-success">
                   </div>
                 </div><%
                             }else if(status.equals("Update") && status != null){%>
                                <div class="form-group">
                                 <div class="col-md-12 text-right">
-                                    <input type="submit" value="Update" name="Btn">
+                                    <input type="submit" value="Update" name="Btn" class="btn btn-info">
                                 </div>
                               </div> 
                             <%}
