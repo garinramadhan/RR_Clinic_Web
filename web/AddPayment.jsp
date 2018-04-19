@@ -26,7 +26,7 @@
 <!--===============================================================================================-->
     </head>
     <body>
-        <form>
+        <form action="AddPayment" method="post" id="addPayment">
              <%               
             String user = (String)session.getAttribute("username");
             if(user != null) {
@@ -100,7 +100,7 @@
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="txtMoney">Money</label>
                   <div class="col-md-9">
-                    <input ID="txtMoney" name="txtMoney" placeholder="Money" CssClass="form-control"></input>
+                      <input ID="txtMoney" name="txtMoney" placeholder="Money" CssClass="form-control" onkeyup="return calculate()"></input>
                   </div>
                 </div>
 
@@ -132,6 +132,7 @@
                           <th>Payment Doctor</th>
                           <th>Payment Drug</th>
                           <th>Total Payment</th>
+                          <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -158,6 +159,9 @@
                             out.println("<td>"+paymentDoctor+"</td>");
                             out.println("<td>"+paymentDrug+"</td>");
                             out.println("<td>"+totPay+"</td>");
+                            out.println("<td>");
+                            out.println("<a role='button' class='btn btn-info' id='btnSelect'>Select </a>");
+                            out.println("</td>");
                             out.println("</tr>");
                         }
                     }
@@ -187,20 +191,23 @@
         $('.table').DataTable();
       });
     </script>
-    
     <script>
-        var table = document.getElementById("dataPayment");
-        if (table != null) {
-            for (var i = 0; i < table.rows.length; i++) {
-                table.rows[i].cells[0].onclick = function () {
-                    tableText(this);
-                };
-            }
+        function calculate() {
+            document.getElementById("txtChange").value = document.getElementById("txtMoney").value - document.getElementById("txtTotalPayment").value;
         }
+    </script>
+    <script>
+        $('.btn').on('click', function () {
+            //$(this).parent().parent().find('td:first').text());
+            document.getElementById("txtIdPayment").value = $(this).parent().parent().find('td:eq(0)').text();
+            document.getElementById("txtPatientName").value = $(this).parent().parent().find('td:eq(1)').text();
+            document.getElementById("txtDoctorName").value = $(this).parent().parent().find('td:eq(2)').text();
+            document.getElementById("txtDiagnose").value = $(this).parent().parent().find('td:eq(3)').text();
+            document.getElementById("txtPaymentDoctor").value = $(this).parent().parent().find('td:eq(4)').text();
+            document.getElementById("txtPaymentDrug").value = $(this).parent().parent().find('td:eq(5)').text();
+            document.getElementById("txtTotalPayment").value = $(this).parent().parent().find('td:eq(6)').text();
+        });
         
-        function tableText(tableCell) {
-            document.getElementById("txtIdPayment").value = tableCell.innerHTML;
-        }
 </script>
 <!--===============================================================================================-->
     <script type="text/javascript">

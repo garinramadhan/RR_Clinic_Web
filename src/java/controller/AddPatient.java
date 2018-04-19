@@ -7,6 +7,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,6 +36,9 @@ public class AddPatient extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            RequestDispatcher rd = request.getRequestDispatcher("Patient.jsp");
+            rd.forward(request, response);
+            
             String status = request.getParameter("Btn");
             String gender = request.getParameter("gender");
             MPatient md = new MPatient();
@@ -61,6 +65,17 @@ public class AddPatient extends HttpServlet {
                     response.sendRedirect("Patient.jsp?ket=Gagal");
                 }
             }
+            
+            if(request.getParameter("status").equals("Delete")){
+                md.setPatientID(request.getParameter("id"));
+                int i = md.doDelete();
+                if(i > 0){
+                    response.sendRedirect("Patient.jsp?ket=Sukses");
+                }else{
+                    response.sendRedirect("Patient.jsp?ket=Gagal");
+                }
+            }
+            
         }
     }
 

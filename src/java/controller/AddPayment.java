@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.MPayment;
 
 /**
  *
@@ -34,15 +35,24 @@ public class AddPayment extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AddPayment</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AddPayment at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            MPayment mp = new MPayment();
+            String money = request.getParameter("txtMoney");
+            String change = request.getParameter("txtChange");
+            if(Integer.parseInt(change) < 0){
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('Money less');");
+                out.println("location='AddPayment.jsp';");
+                out.println("</script>");
+            }else{
+                mp.setPayID(request.getParameter("txtIdPayment"));
+            int i = mp.doUpdate();
+            if(i > 0){
+                response.sendRedirect("Payment.jsp?ket=Sukses");
+            }else{
+                response.sendRedirect("Payment.jsp?ket=Gagal");
+            }
+            }
+            
         }
     }
 
