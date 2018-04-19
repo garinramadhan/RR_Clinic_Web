@@ -117,11 +117,7 @@
 
 <!--         <div class="col-sm-12 col-md-12 col-lg-12">-->
             <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6">
-                
-<!--                <label ID="lblPatientData" Text="Data Patient" style="font-weight: 700"></label>-->
-
-            <h2>Data Patient</h2>
-                
+                <h2>Data Patient</h2>
                 <!--<asp:Button ID="btnSearchPatient" runat="server" Text="Search" CssClass="btn btn-info"/>!-->
             <table id="datatablefh" class="table table-striped table-bordered">
                       <thead>
@@ -156,8 +152,8 @@
                       </tbody>
                     </table>
             </div>
-            <div class="col-sm-5 col-md-5 col-lg-5 col-xs-5 col-sm-offset-1">
-            <h2>Data Doctor</h2>
+            <div class="col-sm-5 col-md-5 col-sm-offset-1">
+                <h2>Data Doctor</h2>
                 <!--<asp:Button ID="btnSearchPatient" runat="server" Text="Search" CssClass="btn btn-info"/>!-->
             <table id="datatablefhDOK" class="table table-striped table-bordered">
                       <thead>
@@ -200,8 +196,7 @@
             </div>
           </div>
     	</div>
-        </div>
-        </form>
+<!--        </div>-->
         
 <!--===============================================================================================-->
     <script src="assets/js/jquery-3.1.1.min.js"></script>
