@@ -4,6 +4,8 @@
     Author     : GR
 --%>
 
+<%@page import="model.MDrug"%>
+<%@page import="model.MDoctor"%>
 <%@page import="model.MRecipe"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -46,7 +48,7 @@
 <!--===============================================================================================-->
     </head>
     <body>
-        <form name="DrugForm" method="post" action="AddDoctor">
+        <form name="DrugForm" method="post" action="AddRecipe">
             <%               
             String user = (String)session.getAttribute("username");
             if(user != null) {
@@ -97,23 +99,23 @@
                 </div>
                 
                 <div class="form-group">
-                  <label class="col-md-3 control-label" for="txtDateofbirth">Drug ID</label>
+                  <label class="col-md-3 control-label" for="txtDrugID">Drug ID</label>
                   <div class="col-md-9">
-                      <input type="text" name="txtName" name="txtName" required="required" class="form-control col-md-7 col-xs-12" value="<%=DrugId%>">
+                      <input type="text" id="txtDrugID" name="txtDrugID" name="txtDrugID" required="required" class="form-control col-md-7 col-xs-12" value="<%=DrugId%>">
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label class="col-md-3 control-label" for="txtPhonenumber">Quantity</label>
+                  <label class="col-md-3 control-label" for="txtQuantity">Quantity</label>
                   <div class="col-md-9">
-                      <input type="text" id="txtPhone" name="txtPhone" required="required" class="form-control col-md-7 col-xs-12" value="<%=Qty%>">
+                      <input type="text" id="txtQuantity" name="txtQuantity" required="required" class="form-control col-md-7 col-xs-12" value="<%=Qty%>">
                   </div>
                 </div>
                   
                 <div class="form-group">
-                  <label class="col-md-3 control-label" for="txtPhonenumber">Dose</label>
+                  <label class="col-md-3 control-label" for="txtDose">Dose</label>
                   <div class="col-md-9">
-                      <input type="text" id="txtType" name="txtPhone" required="required" class="form-control col-md-7 col-xs-12" value="<%=Dose%>">
+                      <input type="text" id="txtDose" name="txtDose" required="required" class="form-control col-md-7 col-xs-12" value="<%=Dose%>">
                   </div>
                 </div>
 
@@ -136,7 +138,97 @@
                       %>
                 
                 </div>
+                      <div class="col-sm-5 col-md-5 col-lg-5 col-xs-5 col-sm-offset-1">
+            <h2>Data Patient</h2>
+                <!--<asp:Button ID="btnSearchPatient" runat="server" Text="Search" CssClass="btn btn-info"/>!-->
+            <table id="dataRecipe" class="table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                          <th>ID Patient</th>
+                          <th>Patient Name</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <%
+                          
+                      try{
+                        MRecipe md = new MRecipe();
+                        ArrayList data = md.patientData();
+                        for(int i = 0;i < data.size()-1;i+=3)
+                        {
+                            String idPatient = (String)data.get(i);
+                            String patientName = (String)data.get(i+1);
+                            String patientDiagnose = (String)data.get(i+2);
+                            
+                            out.println("<tr>");
+                            out.println("<td id='nr'>"+idPatient+"</td>");
+                            out.println("<td>"+patientName+"</td>");
+                            out.println("<td>"+patientDiagnose+"</td>");
+                            out.println("</tr>");
+                        }
+                    }
+                    catch(Exception ex) {
+                        out.println("Data Gagal Ditampilkan : " + ex);
+                        
+                    }
+                      %>                      
+                                             
+                      </tbody>
+                    </table>
+            </div>
                 </div>
+                      
+                      
+                      <div class="col-sm-5 col-md-5 col-lg-5 col-xs-5 col-sm-offset-1">
+            <h2>Data Drug</h2>
+                <!--<asp:Button ID="btnSearchPatient" runat="server" Text="Search" CssClass="btn btn-info"/>!-->
+            <table id="dataDrug" class="table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                          <th>ID Drug</th>
+                          <th>Drug Name</th>
+                          <th>Drug Type</th>
+                          <th>Stock</th>
+                          <th>ExpDate</th>
+                          <th>Price</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <%
+                          
+                      try{
+                        MDrug md = new MDrug();
+                        ArrayList data = md.tableDrug();
+                        for(int i = 0;i < data.size()-1;i+=6)
+                        {
+                            String idDrug = (String)data.get(i);
+                            String drugName = (String)data.get(i+1);
+                            String drugType = (String)data.get(i+2);
+                            Integer stock = (Integer)data.get(i+3);
+                            String expDate = (String)data.get(i+4);
+                            Double price = (Double)data.get(i+5);
+                            
+                            out.println("<tr>");
+                            out.println("<td id='nrDoc'>"+idDrug+"</td>");
+                            out.println("<td>"+drugName+"</td>");
+                            out.println("<td>"+drugType+"</td>");
+                            out.println("<td>"+stock+"</td>");
+                            out.println("<td>"+expDate+"</td>");
+                            out.println("<td>"+price+"</td>");
+                            out.println("</tr>");
+                        }
+                    }
+                    catch(Exception ex) {
+                        out.println("Data Gagal Ditampilkan : " + ex);
+                        
+                    }
+                      %>                      
+                                             
+                      </tbody>
+                    </table>
+            </div>
+                      
+        </div>
             </div>
         </div>
     </form>
@@ -149,6 +241,34 @@
         $('.table').DataTable();
       });
     </script>
+    
+    <script>
+        var table = document.getElementById("dataRecipe");
+        if (table != null) {
+            for (var i = 0; i < table.rows.length; i++) {
+                table.rows[i].cells[0].onclick = function () {
+                    tableText(this);
+                };
+            }
+        }
+        
+        var table = document.getElementById("dataDrug");
+        if (table != null) {
+            for (var i = 0; i < table.rows.length; i++) {
+                table.rows[i].cells[0].onclick = function () {
+                    tableText1(this);
+                };
+            }
+        }
+        
+        function tableText1(tableCell) {
+            document.getElementById("txtDrugID").value = tableCell.innerHTML;
+        }
+
+        function tableText(tableCell) {
+            document.getElementById("txtRecipe").value = tableCell.innerHTML;
+        }
+</script>
 <!--===============================================================================================-->
     <script type="text/javascript">
         $(function () {

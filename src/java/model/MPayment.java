@@ -99,7 +99,9 @@ public class MPayment implements InPayment{
     public ArrayList tablePayment(){
         obj_koneksi.openConnection();
         ArrayList data = new ArrayList();
-        String sql = "select x.Id_Payment, b.Patient_Name, a.Diagnose, x.PaymentDoctor, x.PaymentDrug, x.TotalPayment from Patient.Treatment a join Patient.Patient b on a.Id_Patient = b.Id_Patient join Patient.Payment x on a.Id_Treatment = x.Id_Treatment where x.isPay = '0'";
+        String sql = "select x.Id_Payment, b.Patient_Name, a.Diagnose, d.DoctorName, x.PaymentDoctor, x.PaymentDrug, x.TotalPayment \n" +
+"from Patient.Treatment a join Patient.Patient b on a.Id_Patient = b.Id_Patient join Patient.Payment x on a.Id_Treatment = x.Id_Treatment \n" +
+"join Doctor.Doctor d on d.Id_Doctor = a.Id_Doctor where x.isPay = '0'";
         try {
             Statement statement = obj_koneksi.con.createStatement();
             ResultSet rs = statement.executeQuery(sql);
@@ -108,9 +110,10 @@ public class MPayment implements InPayment{
                  data.add(rs.getString(1));
                  data.add(rs.getString(2));
                  data.add(rs.getString(3));
-                 data.add(rs.getDouble(4));
+                 data.add(rs.getString(4));
                  data.add(rs.getDouble(5));
                  data.add(rs.getDouble(6));
+                 data.add(rs.getDouble(7));
              }
         } catch (SQLException ex) {
             System.out.println("Error: " + ex);

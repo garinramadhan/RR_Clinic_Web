@@ -29,7 +29,17 @@
 <!--===============================================================================================-->
     </head>
     <body>
-        <%
+        <form method="post" action="AddTreatment" id="addTreatment">
+             <%               
+            String user = (String)session.getAttribute("username");
+            if(user != null) {
+                //out.println("Welcome, " + user);
+            }
+            else {
+                response.sendRedirect("login.jsp");
+            }
+        %>
+            <%
             MTreatment mt = new MTreatment();
             String idTreatment, idRecipe;
             idTreatment = mt.autoid();
@@ -98,25 +108,26 @@
                 <div class="form-group">
                   <div class="col-md-12 text-right">
                     
-                      <button ID="btnSave" name="Save" CssClass="btn btn-primary btn-lg" Text="Save" />
+                      <button ID="btnSave" name="Save" Class="btn btn-primary btn-lg">Save</button>
                     
                   </div>
                 </div>
 
                 <hr>
 
-         <div class="col-sm-12 col-md-12 col-lg-12">
+<!--         <div class="col-sm-12 col-md-12 col-lg-12">-->
             <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6">
                 
-                <label ID="lblPatientData" Text="Data Patient" style="font-weight: 700"></label>
+<!--                <label ID="lblPatientData" Text="Data Patient" style="font-weight: 700"></label>-->
+
+            <h2>Data Patient</h2>
                 
                 <!--<asp:Button ID="btnSearchPatient" runat="server" Text="Search" CssClass="btn btn-info"/>!-->
-            <table id="datatable-fixed-header" class="table table-striped table-bordered">
+            <table id="datatablefh" class="table table-striped table-bordered">
                       <thead>
                         <tr>
                           <th>ID Patient</th>
                           <th>Patient Name</th>
-                          <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -133,9 +144,6 @@
                             out.println("<tr>");
                             out.println("<td id='nr'>"+idPatient+"</td>");
                             out.println("<td>"+patientName+"</td>");
-                            out.println("<td>");
-                            out.println("<a role='button' class='btn btn-info' id='btnSelectPatient' >Select </a>");
-                            out.println("</td>");
                             out.println("</tr>");
                         }
                     }
@@ -149,15 +157,14 @@
                     </table>
             </div>
             <div class="col-sm-5 col-md-5 col-lg-5 col-xs-5 col-sm-offset-1">
-                
+            <h2>Data Doctor</h2>
                 <!--<asp:Button ID="btnSearchPatient" runat="server" Text="Search" CssClass="btn btn-info"/>!-->
-            <table id="datatable-fixed-header" class="table table-striped table-bordered">
+            <table id="datatablefhDOK" class="table table-striped table-bordered">
                       <thead>
                         <tr>
                           <th>ID Doctor</th>
                           <th>Doctor Name</th>
                           <th>Specialist</th>
-                          <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -176,9 +183,6 @@
                             out.println("<td id='nrDoc'>"+idDoctor+"</td>");
                             out.println("<td>"+doctorName+"</td>");
                             out.println("<td>"+doctorSpc+"</td>");
-                            out.println("<td>");
-                            out.println("<a role='button' class='btn btn-info' id='btnSelectDoc' >Select </a>");
-                            out.println("</td>");
                             out.println("</tr>");
                         }
                     }
@@ -197,6 +201,7 @@
           </div>
     	</div>
         </div>
+        </form>
         
 <!--===============================================================================================-->
     <script src="assets/js/jquery-3.1.1.min.js"></script>
@@ -204,24 +209,38 @@
 <!--===============================================================================================-->
     <script>
         $(document).ready(function() {
-            $('#datatable-fixed-header').DataTable( {
+            $('#datatablefh').DataTable( {
                 "lengthMenu": [[5, 15, 25, 50, -1], [5, 15, 25, 50, "All"]]
             } );
         } );
     </script>
     
     <script>
-        $("#btnSelectPatient").click(function () {
-        var id = $(this).closest("tr").find("#nr").text();
-        //alert(id);
-        document.getElementById("txtIdPatient").value = id;
-      });
+        var table = document.getElementById("datatablefh");
+        if (table != null) {
+            for (var i = 0; i < table.rows.length; i++) {
+                table.rows[i].cells[0].onclick = function () {
+                    tableText(this);
+                };
+            }
+        }
+        
+        var table = document.getElementById("datatablefhDOK");
+        if (table != null) {
+            for (var i = 0; i < table.rows.length; i++) {
+                table.rows[i].cells[0].onclick = function () {
+                    tableText1(this);
+                };
+            }
+        }
+        
+        function tableText1(tableCell) {
+            document.getElementById("txtIdDoctor").value = tableCell.innerHTML;
+        }
 
-        $("#btnSelectDoc").click(function () {
-          var id = $(this).closest("tr").find("#nrDoc").text();
-          //alert(id);
-          document.getElementById("txtIdDoctor").value = id;
-        });
+        function tableText(tableCell) {
+            document.getElementById("txtIdPatient").value = tableCell.innerHTML;
+        }
 </script>
 <!--===============================================================================================-->
 <!--    <script type="text/javascript">

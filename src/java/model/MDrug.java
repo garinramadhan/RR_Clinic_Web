@@ -151,6 +151,7 @@ public class MDrug implements InDrug{
     }
     
     public ArrayList tableDrug(){
+        obj_koneksi.openConnection();
         ArrayList data = new ArrayList();
         obj_koneksi.openConnection();
         String sql = "select * from Recipe.Drug";

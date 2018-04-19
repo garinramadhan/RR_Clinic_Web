@@ -157,6 +157,25 @@ public class MRecipe implements InRecipe {
         return data;
     }
     
+    public ArrayList patientData(){
+        obj_koneksi.openConnection();
+        ArrayList data = new ArrayList();
+        String sql = "select a.Id_Recipe, b.Patient_Name, c.Diagnose from Patient.Treatment c join Patient.Patient b on c.Id_Patient = b.Id_Patient join Recipe.Recipe a on c.Id_Recipe = a.Id_Recipe join Patient.Payment x on c.Id_Treatment = x.Id_Treatment where x.isPay = 0";
+        try {
+            Statement statement = obj_koneksi.con.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+             while(rs.next())
+             {
+                 data.add(rs.getString(1));
+                 data.add(rs.getString(2));
+                 data.add(rs.getString(3));
+             }
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex);
+        }
+        return data;
+    }
+    
     public ArrayList tableRecipe(){
         obj_koneksi.openConnection();
         ArrayList data = new ArrayList();

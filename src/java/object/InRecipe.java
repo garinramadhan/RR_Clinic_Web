@@ -28,6 +28,7 @@ public interface InRecipe {
     public void setIsDraft(int IsDraft);
     public int doInsert();
 //    public int doUpdate();
+    public ArrayList patientData();
     public int doDelete();
     public ArrayList tableRecipe();
     public ArrayList tableDrug();
