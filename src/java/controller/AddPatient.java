@@ -47,6 +47,7 @@ public class AddPatient extends HttpServlet {
                 md.setPatientName(request.getParameter("txtName"));
                 md.setPatientGender(gender);
                 md.setPatientDOB(request.getParameter("dob"));
+                md.setPatientAddress(request.getParameter("txtAddress"));
                 int i = md.doUpdate();
                 if(i > 0){
                     response.sendRedirect("Patient.jsp?ket=Sukses");
@@ -58,6 +59,7 @@ public class AddPatient extends HttpServlet {
                 md.setPatientName(request.getParameter("txtName"));
                 md.setPatientGender(gender);
                 md.setPatientDOB(request.getParameter("dob"));
+                md.setPatientAddress(request.getParameter("txtAddress"));
                 int i = md.doInsert();
                 if(i > 0){
                     response.sendRedirect("Patient.jsp?ket=Sukses");

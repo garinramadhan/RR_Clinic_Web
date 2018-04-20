@@ -31,6 +31,7 @@
 <!--===============================================================================================-->
     </head>
     <body>
+        <form action="Login" method="post" id="dashboard">
         <%               
             String user = (String)session.getAttribute("username");
             String role = (String)session.getAttribute("role");
@@ -72,7 +73,7 @@
                     
                     <ul class="dropdown-menu dropdown-color">
                         <li><a href="#">Change Password</a></li>
-                        <li><a role="button" id="btnLogout" onclick="btnLogout_Click" href="#">Logout</a></li>
+                        <li><a role="button" id="btnLogout" name="btnLogout" value="logout" href="#">Logout</a></li>
                     </ul>
                 </li>
             </ul>

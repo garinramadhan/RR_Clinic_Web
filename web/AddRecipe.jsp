@@ -25,7 +25,11 @@
         <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.css"/>
         <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <!--===============================================================================================-->
+    <div class="top_nav">
+        <a role="button" class="btn btn-light" href="index.jsp" style="margin-top: 5px;margin-left: 5px;"><i class="material-icons" style="font-size: 28px;">arrow_back</i></a>
+    </div>
         <center>
         <%
                               String status;
@@ -138,7 +142,7 @@
                       %>
                 
                 </div>
-                      <div class="col-sm-5 col-md-5 col-lg-5 col-xs-5 col-sm-offset-1">
+            <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6">
             <h2>Data Patient</h2>
                 <!--<asp:Button ID="btnSearchPatient" runat="server" Text="Search" CssClass="btn btn-info"/>!-->
             <table id="dataRecipe" class="table table-striped table-bordered">
@@ -146,6 +150,7 @@
                         <tr>
                           <th>ID Patient</th>
                           <th>Patient Name</th>
+                          <th>Diagnose</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -179,7 +184,7 @@
                 </div>
                       
                       
-                      <div class="col-sm-5 col-md-5 col-lg-5 col-xs-5 col-sm-offset-1">
+            <div class="col-sm-5 col-md-5 col-sm-offset-1">
             <h2>Data Drug</h2>
                 <!--<asp:Button ID="btnSearchPatient" runat="server" Text="Search" CssClass="btn btn-info"/>!-->
             <table id="dataDrug" class="table table-striped table-bordered">

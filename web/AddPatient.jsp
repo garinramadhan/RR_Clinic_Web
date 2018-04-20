@@ -23,7 +23,12 @@
     <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.css"/>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <!--===============================================================================================-->
+    <div class="top_nav">
+        <a role="button" class="btn btn-light" href="index.jsp" style="margin-top: 5px;margin-left: 5px;"><i class="material-icons" style="font-size: 28px;">arrow_back</i></a>
+    </div>
+    
 <center>
         <%
                               String status;
@@ -46,7 +51,7 @@
 <!--===============================================================================================-->
     </head>
     <body>
-        <form name="PatientForm" method="post" action="AddPatient">
+        <form name="PatientForm" method="post" action="AddPatient" id="patform">
             <%               
             String user = (String)session.getAttribute("username");
             if(user != null) {
@@ -93,6 +98,13 @@
                 </div>
 
                 <div class="form-group">
+                  <label class="col-md-3 control-label" for="txtDateofbirth">Date of Birth</label>
+                  <div class="col-md-9">
+                      <input type="date" name="dob" value="<%=PatientDOB%>">
+                  </div>
+                </div>  
+                  
+                <div class="form-group">
                   <label class="col-md-3 control-label" for="gender">Gender</label>
                   <div class="col-md-9">
                     <input type="radio" name="gender" value="male"> Male
@@ -101,11 +113,13 @@
                 </div>
                 
                 <div class="form-group">
-                  <label class="col-md-3 control-label" for="txtDateofbirth">Date of Birth</label>
+                  <label class="col-md-3 control-label" for="txtPatientname">Patient Address</label>
                   <div class="col-md-9">
-                      <input type="date" name="dob" value="<%=PatientDOB%>">
+<!--                    <input type="text" id="txtAddress" name="txtAddress" required="required" class="form-control col-md-7 col-xs-12" value="">-->
+                      <textarea form="patform" id="txtAddress" name="txtAddress" required="required" class="form-control col-md-7 col-xs-12" value="<%=PatientAddress%>"></textarea>
                   </div>
                 </div>
+                
 
                               <%
                           if(status != null){
@@ -142,8 +156,8 @@
 <!--===============================================================================================-->
     <script type="text/javascript">
         $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-        })
+            $('[data-toggle="tooltip"]').tooltip();
+        });
     </script>
 <!--===============================================================================================-->
     </body>
