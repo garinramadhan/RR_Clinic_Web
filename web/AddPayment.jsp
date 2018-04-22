@@ -30,7 +30,7 @@
     </div>
     </head>
     <body>
-        <form action="AddPayment" method="POST" id="AddPayment">
+        <form action="UpdatePayment" method="POST" id="addPayment">
              <%               
             String user = (String)session.getAttribute("username");
             if(user != null) {
@@ -52,7 +52,7 @@
                 <hr>
 
                 <div class="form-group">
-                  <label class="col-md-3 control-label" for="txtIdPayment2">Id Payment</label>
+                  <label class="col-md-3 control-label" for="txtIdPayment1">Id Payment</label>
                   <div class="col-md-9">
                       <input id="txtIdPayment1" name="txtIdPayment1" placeholder="Please select Id Payment from table below" CssClass="form-control"></input>
                   </div>
@@ -124,6 +124,8 @@
                 <div class="form-group">
                                 <div class="col-md-12 text-right">
                                     <input type="submit" value="Save" name="Save" class="btn btn-info">
+<!--<a role="button" class="btn btn-info" name="Save" href="UpdatePayment">Select </a>-->
+
                                 </div>
                               </div> 
                 <hr>
