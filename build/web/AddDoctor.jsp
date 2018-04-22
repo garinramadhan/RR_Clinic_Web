@@ -57,7 +57,7 @@
 <!--===============================================================================================-->
 </head>
     <body>
-    <form name="DrugForm" method="post" action="AddDoctor">
+    <form name="doctorForm" method="post" action="AddDoctor">
         <%               
             String user = (String)session.getAttribute("username");
             if(user != null) {

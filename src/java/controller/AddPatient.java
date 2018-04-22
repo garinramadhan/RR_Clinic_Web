@@ -67,16 +67,15 @@ public class AddPatient extends HttpServlet {
                     response.sendRedirect("Patient.jsp?ket=Gagal");
                 }
             }
-            
-            if(request.getParameter("status").equals("Delete")){
-                md.setPatientID(request.getParameter("id"));
-                int i = md.doDelete();
-                if(i > 0){
-                    response.sendRedirect("Patient.jsp?ket=Sukses");
-                }else{
-                    response.sendRedirect("Patient.jsp?ket=Gagal");
-                }
-            }
+//            else if(request.getParameter("status").equals("Delete")){
+//                md.setPatientID(request.getParameter("id"));
+//                int i = md.doDelete();
+//                if(i > 0){
+//                    response.sendRedirect("Patient.jsp?ket=Sukses");
+//                }else{
+//                    response.sendRedirect("Patient.jsp?ket=Gagal");
+//                }
+//            }
             
         }
     }

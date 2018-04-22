@@ -80,12 +80,14 @@ public class MPayment implements InPayment{
     @Override
     public int doUpdate(){
         int i = 0;
+        IsPay = 1;
         try
         {
             obj_koneksi.openConnection();
-            String str = "update Patient.Payment set isPay = '1' where Id_Payment = ?";
+            String str = "update Patient.Payment set isPay = ? where Id_Payment = ?";
             PreparedStatement pr = obj_koneksi.con.prepareStatement(str);
-            pr.setString(1, PayID);
+            pr.setString(1, IsPay+"");
+            pr.setString(2, PayID);
             i = pr.executeUpdate();
         }
         catch(SQLException ex)

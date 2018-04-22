@@ -14,6 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.MPayment;
 
+import java.util.logging.Level;
+import static java.util.logging.Level.*;
+import java.util.logging.Logger;
+
 /**
  *
  * @author dhadotid
@@ -21,6 +25,7 @@ import model.MPayment;
 @WebServlet(name = "AddPayment", urlPatterns = {"/AddPayment"})
 public class AddPayment extends HttpServlet {
 
+    private static final Logger LOG = Logger.getLogger(AddPayment.class.getName());
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,24 +40,31 @@ public class AddPayment extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            
             MPayment mp = new MPayment();
+            String idPay = request.getParameter("txtIdPayment1");
             String money = request.getParameter("txtMoney");
             String change = request.getParameter("txtChange");
             if(Integer.parseInt(change) < 0){
                 out.println("<script type=\"text/javascript\">");
-                out.println("alert('Money less');");
+                out.println("alert('Insuficient money');");
                 out.println("location='AddPayment.jsp';");
                 out.println("</script>");
             }else{
-                mp.setPayID(request.getParameter("txtIdPayment"));
-            int i = mp.doUpdate();
-            if(i > 0){
-                response.sendRedirect("Payment.jsp?ket=Sukses");
-            }else{
-                response.sendRedirect("Payment.jsp?ket=Gagal");
+                mp.setPayID(idPay);
+                
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('Test: " + idPay + "');");
+                out.println("location='AddPayment.jsp';");
+                out.println("</script>");
+                LOG.log(WARNING, "ASDW " + idPay);
+                int i = mp.doUpdate();
+                if(i > 0){
+                    response.sendRedirect("Payment.jsp?ket=Sukses");
+                }else{
+                    response.sendRedirect("Payment.jsp?ket=Gagal");
+                }
             }
-            }
-            
         }
     }
 

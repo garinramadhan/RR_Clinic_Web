@@ -26,7 +26,7 @@
 <!--===============================================================================================-->
     </head>
     <body>
-        <form action="AddPatient" method="post" id="addPatient">
+<!--        <form method="post" action="Patient" id="addPatient">-->
         <%               
             String user = (String)session.getAttribute("username");
             String role = (String)session.getAttribute("role");
@@ -103,7 +103,7 @@
                             if(role.equals("1")){
                                 out.println("<td>");
                                 out.println("<a role='button' class='btn btn-info' href='AddPatient.jsp?status=Update&id="+idPatient+"' >Modify </a>");
-                                out.println("<a role='button' name='Btn' class='btn btn-danger' href='Patient?status=Delete&id="+idPatient+"'>Delete </a>");
+                                out.println("<a role='button' name='Btn' class='btn btn-danger' href='Patient?id="+idPatient+"'>Delete </a>");
                                 out.println("</td>");
                             }
                             out.println("</tr>");
@@ -121,7 +121,7 @@
                 </div>
               </div>
             </div>
-                      </form>
+                      <!--</form>-->
 <!--===============================================================================================-->
     <script>
 //                          $(document).ready( function () {

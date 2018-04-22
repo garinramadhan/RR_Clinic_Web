@@ -26,7 +26,8 @@
 <!--===============================================================================================-->
     </head>
     <body>
-        <%               
+        <form action="AddPayment" method="post" id="paymentForm">
+            <%               
             String user = (String)session.getAttribute("username");
             if(user != null) {
                 //out.println("Welcome, " + user);
@@ -66,7 +67,7 @@
                       %>
                       Payment Record.
                     </p>
-                    <a role="button" class="btn btn-default col-sm-1" href="AddPayment.jsp?status=Add&id=">Add..</a><br><br>
+                    <a role="button" class="btn btn-default col-sm-1" href="AddPayment.jsp">Add..</a><br><br>
                     <table id="datatable-fixed-header" class="table table-striped table-bordered">
                       <thead>
                         <tr>
@@ -119,6 +120,8 @@
                 </div>
               </div>
             </div>
+        </form>
+        
 <!--===============================================================================================-->
     <script>
         $(document).ready(function() {

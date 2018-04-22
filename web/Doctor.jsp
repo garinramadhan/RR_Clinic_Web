@@ -26,7 +26,9 @@
 <!--===============================================================================================-->
     </head>
     <body>
-        <%               
+        <form action="AddDoctor" method="post" id="doctorForm">
+            
+            <%               
             String user = (String)session.getAttribute("username");
             String role = (String)session.getAttribute("role");
             if(user != null) {
@@ -67,7 +69,7 @@
                       Doctor Record.
                     </p>
                     <%if(role.equals("1")){
-                        %><a role="button" class="btn btn-default col-sm-1" href="AddDoctor.jsp?status=Add&id=">Add..</a><br><br><%
+                        %><a role="button" class="btn btn-default col-sm-1" href="AddDoctor.jsp?status=Add">Add..</a><br><br><%
                     }%>
                     
                     <table id="datatable-fixed-header" class="table table-striped table-bordered">
@@ -106,10 +108,10 @@
                             out.println("<td>"+DOB+"</td>");
                             out.println("<td>"+DoctorPhone+"</td>");
                             if(role.equals("1")){
-                            out.println("<td>");
-                            out.println("<a role='button' class='btn btn-info' href='AddDoctor.jsp?status=Update&id="+idDoctor+"' >Modify </a>");
-                            out.println("<a role='button' class='btn btn-danger' href='delete_book.jsp?id="+idDoctor+"'>Delete </a>");
-                            out.println("</td>");
+                                out.println("<td>");
+                                out.println("<a role='button' class='btn btn-info' href='AddDoctor.jsp?status=Update&id="+idDoctor+"' >Modify </a>");
+                                out.println("<a role='button' class='btn btn-danger' href='Doctor?id="+idDoctor+"'>Delete </a>");
+                                out.println("</td>");
                             }
                             out.println("</tr>");
                         }
@@ -126,6 +128,8 @@
                 </div>
               </div>
             </div>
+                      
+        </form>
 <!--===============================================================================================-->
     <script>
         $(document).ready(function() {

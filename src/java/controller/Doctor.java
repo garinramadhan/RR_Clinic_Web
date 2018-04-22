@@ -14,16 +14,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.MPatient;
+import model.MDoctor;
 
 /**
  *
- * @author dhadotid
+ * @author GR
  */
-@WebServlet(name = "Patient", urlPatterns = {"/Patient"})
-public class Patient extends HttpServlet {
+@WebServlet(name = "Doctor", urlPatterns = {"/Doctor"})
+public class Doctor extends HttpServlet {
 
-    private static final Logger LOG = Logger.getLogger(Patient.class.getName());
+    private static final Logger LOG = Logger.getLogger(AddPayment.class.getName());
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -38,19 +38,15 @@ public class Patient extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            MPatient md = new MPatient();
-            md.setPatientID(request.getParameter("id"));
-                LOG.log(WARNING, "ASD " + md.getPatientID());
+            MDoctor md = new MDoctor();
+            md.setDoctorID(request.getParameter("id"));
+                LOG.log(WARNING, "ASDW " + request.getParameter("id"));
                 int i = md.doDelete();
-                if( i > 0){
-                    response.sendRedirect("Patient.jsp?ket=Sukses");
+                if(i > 0){
+                    response.sendRedirect("Doctor.jsp?ket=Sukses");
                 }else{
-                    response.sendRedirect("Patient.jsp?ket=Gagal");
+                    response.sendRedirect("Doctor.jsp?ket=Gagal");
                 }
-//            String status = request.getParameter("status");
-//            if(status.equals("Delete")){
-//                
-//            }
         }
     }
 

@@ -30,7 +30,7 @@
     </div>
     </head>
     <body>
-        <form action="AddPayment" method="post" id="addPayment">
+        <form action="AddPayment" method="POST" id="AddPayment">
              <%               
             String user = (String)session.getAttribute("username");
             if(user != null) {
@@ -52,9 +52,9 @@
                 <hr>
 
                 <div class="form-group">
-                  <label class="col-md-3 control-label" for="txtIdPayment">Id Payment</label>
+                  <label class="col-md-3 control-label" for="txtIdPayment2">Id Payment</label>
                   <div class="col-md-9">
-                      <input ID="txtIdPayment" name="txtIdPayment" placeholder="Please select Id Payment from table below" CssClass="form-control" Enabled="False"></input>
+                      <input id="txtIdPayment1" name="txtIdPayment1" placeholder="Please select Id Payment from table below" CssClass="form-control"></input>
                   </div>
                 </div>
                 
@@ -115,16 +115,21 @@
                   </div>
                 </div>
 
-                <div class="form-group">
+<!--                <div class="form-group">
                   <div class="col-md-12 text-right">
                     <button ID="btnSave" name="Save" Class="btn btn-primary btn-lg">Save</button>
                   </div>
-                </div>
+                </div>-->
 
+                <div class="form-group">
+                                <div class="col-md-12 text-right">
+                                    <input type="submit" value="Save" name="Save" class="btn btn-info">
+                                </div>
+                              </div> 
                 <hr>
 
          <div class="col-sm-12 col-md-12 col-lg-12">
-            <label ID="lblDataPayment" Text="Data Payment" style="font-weight: 700">Data Payment</asp:Label>
+            <label ID="lblDataPayment" Text="Data Payment" style="font-weight: 700">Data Payment</label>
                 
             <table id="dataPayment" class="table table-striped table-bordered">
                       <thead>
@@ -164,7 +169,7 @@
                             out.println("<td>"+paymentDrug+"</td>");
                             out.println("<td>"+totPay+"</td>");
                             out.println("<td>");
-                            out.println("<a role='button' class='btn btn-info' id='btnSelect'>Select </a>");
+                            out.println("<a role='button' class='btn btn-info' name='btn'>Select </a>");
                             out.println("</td>");
                             out.println("</tr>");
                         }
@@ -178,7 +183,7 @@
                       </tbody>
                     </table>
         </div>
-
+<!--                      <label class="col-md-3 control-label" name="lblIdPay"></label>-->
             </div>
           </div>
     	</div>
@@ -201,23 +206,38 @@
         }
     </script>
     <script>
+//        var table = document.getElementById("dataPayment");
+//        if (table != null) {
+//            for (var i = 0; i < table.rows.length; i++) {
+//                table.rows[i].cells[0].onclick = function () {
+//                    tableText(this);
+//                };
+//            }
+//        }
+//        
+//        function tableText(tableCell) {
+//            document.getElementById("txtIdPayment1").value = tableCell.innerHTML;
+//        }
         $('.btn').on('click', function () {
             //$(this).parent().parent().find('td:first').text());
-            document.getElementById("txtIdPayment").value = $(this).parent().parent().find('td:eq(0)').text();
+            
+            document.getElementById("txtIdPayment1").value = $(this).parent().parent().find('td:eq(0)').text();
             document.getElementById("txtPatientName").value = $(this).parent().parent().find('td:eq(1)').text();
             document.getElementById("txtDoctorName").value = $(this).parent().parent().find('td:eq(2)').text();
             document.getElementById("txtDiagnose").value = $(this).parent().parent().find('td:eq(3)').text();
             document.getElementById("txtPaymentDoctor").value = $(this).parent().parent().find('td:eq(4)').text();
             document.getElementById("txtPaymentDrug").value = $(this).parent().parent().find('td:eq(5)').text();
             document.getElementById("txtTotalPayment").value = $(this).parent().parent().find('td:eq(6)').text();
+            
+            //document.getElementsByName("lblIdPay").InnerHTML = $(this).parent().parent().find('td:eq(0)').text();
+            //alert(document.getElementById("txtIdPayment1").value);
         });
-        
 </script>
 <!--===============================================================================================-->
     <script type="text/javascript">
         $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-        })
+            $('[data-toggle="tooltip"]').tooltip();
+        });
     </script>
     </body>
 </html>
